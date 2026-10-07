@@ -4,6 +4,7 @@ export type NavLink = { label: string; href: string; description?: string };
 export type NavItem = NavLink & { children?: NavLink[] };
 
 export const mainNav: NavItem[] = [
+  { label: "Home", href: "/" },
   {
     label: "Insurance Solutions",
     href: "/insurance-solutions",
@@ -33,7 +34,18 @@ export const mainNav: NavItem[] = [
     children: [
       { label: "About Finmirai", href: "/about-us", description: "Our approach and values." },
       { label: "Leadership", href: "/about-us/leadership", description: "Our Managing Director & Principal Officer." },
-      { label: "Knowledge Centre", href: "/knowledge-centre", description: "Guides and FAQs on insurance." },
+    ],
+  },
+  {
+    label: "Resources",
+    href: "/knowledge-centre",
+    children: [
+      { label: "Knowledge Centre", href: "/knowledge-centre", description: "Plain-language guides to insurance." },
+      { label: "Claim Documents Checklist", href: "/knowledge-centre/documents-needed-for-insurance-claim", description: "What insurers commonly ask for, by claim type." },
+      { label: "Health Insurance Waiting Periods", href: "/knowledge-centre/health-insurance-waiting-periods-explained", description: "Why some claims aren't paid early in a policy." },
+      { label: "Insurance FAQs", href: "/knowledge-centre#faqs", description: "Quick answers to common questions." },
+      { label: "Legal & Disclosures", href: "/legal", description: "Privacy, terms and regulatory disclosures." },
+      { label: "Grievance Redressal", href: "/legal/grievance-redressal", description: "How to raise a concern with us." },
     ],
   },
   { label: "Contact", href: "/contact-us" },

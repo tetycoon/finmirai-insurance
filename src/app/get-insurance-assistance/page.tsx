@@ -23,9 +23,14 @@ export default async function GetInsuranceAssistancePage({ searchParams }: Props
     <>
       <PageHero
         crumbs={[{ name: "Get Insurance Assistance", path: "/get-insurance-assistance" }]}
-        eyebrow="No obligation"
+        eyebrow="Get a quote · No obligation"
         title="Get Insurance Assistance"
-        intro={<p>Share a few details. It takes about two minutes, and a Finmirai advisor will get back to you to understand your need.</p>}
+        intro={
+          <p>
+            Share a few details — it takes about two minutes. A Finmirai advisor will understand your need and get back to you with suitable
+            options and quotes.
+          </p>
+        }
       />
       <Section tone="mist">
         <div className="grid gap-10 lg:grid-cols-12">

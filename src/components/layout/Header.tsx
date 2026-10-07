@@ -95,11 +95,11 @@ export function Header() {
       </div>
 
       <div className={`border-b bg-white/95 backdrop-blur transition-shadow ${scrolled ? "border-navy-100 shadow-card" : "border-transparent"}`}>
-        <div ref={navRef} className="container flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
+        <div ref={navRef} className="container flex h-16 items-center justify-between gap-3 lg:h-[4.5rem] min-[1400px]:!max-w-[1360px]">
           <Logo />
 
           <nav aria-label="Main" className="hidden xl:block">
-            <ul className="flex items-center gap-0.5">
+            <ul className="flex items-center">
               {mainNav.map((item, i) => {
                 const active = isActive(pathname, item);
                 if (!item.children) {
@@ -108,10 +108,10 @@ export function Header() {
                       <Link
                         href={item.href}
                         aria-current={pathname === item.href ? "page" : undefined}
-                        className={`relative whitespace-nowrap rounded-md px-3 py-2 text-[0.9375rem] font-medium transition hover:text-navy-900 ${active ? "text-navy-900" : "text-navy-600"}`}
+                        className={`relative whitespace-nowrap rounded-md px-1.5 py-2 text-[0.875rem] min-[1400px]:px-2.5 font-medium transition hover:text-navy-900 ${active ? "text-navy-900" : "text-navy-600"}`}
                       >
                         {item.label}
-                        {active ? <span className="absolute inset-x-3 -bottom-[1px] h-0.5 rounded bg-gold-400" /> : null}
+                        {active ? <span className="absolute inset-x-1.5 -bottom-[1px] h-0.5 rounded bg-gold-400" /> : null}
                       </Link>
                     </li>
                   );
@@ -124,16 +124,16 @@ export function Header() {
                       aria-expanded={open === i}
                       aria-controls={`menu-${i}`}
                       onClick={() => setOpen(open === i ? null : i)}
-                      className={`relative inline-flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-[0.9375rem] font-medium transition hover:text-navy-900 ${active ? "text-navy-900" : "text-navy-600"}`}
+                      className={`relative inline-flex items-center gap-1 whitespace-nowrap rounded-md px-1.5 py-2 text-[0.875rem] min-[1400px]:px-2.5 font-medium transition hover:text-navy-900 ${active ? "text-navy-900" : "text-navy-600"}`}
                     >
                       {item.label}
                       <Icon name="chevronDown" className={`h-4 w-4 transition ${open === i ? "rotate-180" : ""}`} />
-                      {active ? <span className="absolute inset-x-3 -bottom-[1px] h-0.5 rounded bg-gold-400" /> : null}
+                      {active ? <span className="absolute inset-x-1.5 -bottom-[1px] h-0.5 rounded bg-gold-400" /> : null}
                     </button>
                     <div
                       id={`menu-${i}`}
                       hidden={open !== i}
-                      className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 ${wide ? "w-[640px]" : "w-80"}`}
+                      className={`absolute top-full z-50 pt-3 ${i >= mainNav.length - 3 ? "right-0" : "left-1/2 -translate-x-1/2"} ${wide ? "w-[640px]" : "w-80"}`}
                     >
                       <div className="overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-lift">
                         <ul className={`grid gap-1 p-3 ${wide ? "grid-cols-2" : ""}`}>
@@ -163,8 +163,14 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <ButtonLink href="/get-insurance-assistance" variant="navy" size="sm" className="hidden whitespace-nowrap sm:inline-flex lg:h-10 lg:px-4">
-              Get Insurance Assistance
+            <ButtonLink
+              href="/get-insurance-assistance"
+              variant="gold"
+              size="sm"
+              iconRight="arrowRight"
+              className="hidden whitespace-nowrap font-bold shadow-md ring-1 ring-gold-500/40 hover:shadow-lg sm:inline-flex lg:h-11 lg:px-4"
+            >
+              Get a Quote
             </ButtonLink>
             <button
               type="button"
@@ -222,8 +228,8 @@ export function Header() {
             ))}
           </ul>
           <div className="mt-6 grid gap-3">
-            <ButtonLink href="/get-insurance-assistance" variant="navy" size="lg">
-              Get Insurance Assistance
+            <ButtonLink href="/get-insurance-assistance" variant="gold" size="lg" iconRight="arrowRight" className="font-bold">
+              Get a Quote
             </ButtonLink>
             <ButtonLink href="/become-an-advisor" variant="outline" size="lg">
               Become a Finmirai Advisor

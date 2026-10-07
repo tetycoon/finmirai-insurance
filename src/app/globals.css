@@ -19,6 +19,15 @@
   :focus-visible {
     @apply outline-none ring-2 ring-gold-400 ring-offset-2;
   }
+  /* In-page anchors (e.g. /knowledge-centre#faqs) shouldn't land under the sticky header */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+  @media (min-width: 1024px) {
+    [id] {
+      scroll-margin-top: 8rem;
+    }
+  }
   ::selection {
     @apply bg-gold-200 text-navy-900;
   }

@@ -32,7 +32,7 @@ export default function KnowledgeCentrePage() {
       <Section tone="mist">
         <ArticleBrowser articles={articles} />
       </Section>
-      <Section labelledBy="gfaq-heading">
+      <Section id="faqs" labelledBy="gfaq-heading">
         <div className="grid gap-10 lg:grid-cols-12">
           <SectionHeading id="gfaq-heading" eyebrow="FAQs" title="General insurance questions" className="lg:col-span-4" />
           <div className="lg:col-span-8">
