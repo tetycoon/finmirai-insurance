@@ -108,50 +108,7 @@ export function HomeHero() {
             </div>
           </div>
 
-          {/* Protection card — shield draws itself, then the check (desktop only) */}
-          <div className="anim-fade-up absolute right-8 top-12 hidden w-[17.5rem] lg:block xl:right-14" style={d(1.4)}>
-            <div className="anim-float rounded-2xl border border-white/15 bg-navy-950/65 p-5 shadow-lift backdrop-blur-md">
-              <div className="flex items-center gap-3.5">
-                <svg viewBox="0 0 48 48" className="h-12 w-12 shrink-0" aria-hidden>
-                  <path
-                    pathLength={100}
-                    className="anim-draw"
-                    style={d(1.6)}
-                    d="M24 4 8 10v11c0 10 6.8 18.4 16 21 9.2-2.6 16-11 16-21V10Z"
-                    fill="none"
-                    stroke="#DFBE65"
-                    strokeWidth={2.5}
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    pathLength={100}
-                    className="anim-draw"
-                    style={d(2.4)}
-                    d="m16.5 24 5 5 10-10.5"
-                    fill="none"
-                    stroke="#FFFFFF"
-                    strokeWidth={3}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <div>
-                  <p className="font-display font-semibold leading-snug">Protection that stays with you</p>
-                  <p className="mt-0.5 text-xs text-navy-200">Advice · Servicing · Claims support</p>
-                </div>
-              </div>
-              <ul className="mt-4 space-y-2 border-t border-white/10 pt-4 text-sm text-navy-100">
-                {["Cover explained clearly", "Renewal reminders", "Guidance at claim time"].map((t, i) => (
-                  <li key={t} className="anim-fade-up flex items-center gap-2.5" style={d(2.2 + i * 0.15)}>
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Audience badge — desktop only; floats out of step with the card above */}
+          {/* Audience badge — desktop only */}
           <div className="anim-fade-up absolute bottom-40 right-8 hidden max-w-[15rem] lg:block" style={d(1.6)}>
             <div className="anim-float rounded-2xl border border-white/15 bg-navy-950/60 p-5 backdrop-blur" style={{ animationDelay: "-3.5s" }}>
               <Icon name="users" className="h-7 w-7 text-gold-300" />

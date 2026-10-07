@@ -164,18 +164,6 @@
 .anim-float {
   animation: fin-float 7s ease-in-out infinite;
 }
-/* Shield outline draws itself, then the check mark */
-@keyframes fin-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-.anim-draw {
-  stroke-dasharray: var(--len, 100);
-  stroke-dashoffset: var(--len, 100);
-  animation: fin-draw 1.1s cubic-bezier(0.6, 0, 0.2, 1) forwards;
-}
-
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
   [data-reveal] img {
@@ -185,10 +173,6 @@
   }
   .anim-float {
     animation: none !important;
-  }
-  .anim-draw {
-    animation: none !important;
-    stroke-dashoffset: 0 !important;
   }
 }
 
