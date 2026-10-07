@@ -6,7 +6,7 @@ type Variant = "gold" | "navy" | "outline" | "outlineLight" | "ghost" | "light";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg text-center font-semibold leading-tight transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-lg text-center font-semibold leading-tight transition duration-200 ease-out hover:-translate-y-px active:translate-y-0 disabled:pointer-events-none disabled:opacity-60";
 
 const variants: Record<Variant, string> = {
   gold: "bg-gold-400 text-navy-950 hover:bg-gold-300 shadow-sm",

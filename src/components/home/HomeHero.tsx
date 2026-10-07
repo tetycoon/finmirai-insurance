@@ -35,14 +35,17 @@ export function HomeHero() {
         <div className="absolute inset-0 -z-10" aria-hidden>
           {/* Phones: full-bleed photo under a strong overlay. Desktop: photo fills the right 60% and blends into navy. */}
           <div className="absolute inset-0 overflow-hidden lg:left-auto lg:w-[60%]">
-            <Image
-              src={images.familyMotherDaughter.src}
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 60vw, 100vw"
-              className="anim-kenburns object-cover object-[70%_center] lg:object-center"
-            />
+            {/* Parallax layer: extends above the frame so drifting never exposes an edge */}
+            <div data-parallax="0.12" suppressHydrationWarning className="absolute inset-x-0 -top-24 bottom-0 will-change-transform">
+              <Image
+                src={images.familyMotherDaughter.src}
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                className="anim-kenburns object-cover object-[70%_center] lg:object-center"
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-b from-navy-950/85 via-navy-950/80 to-navy-950/95 lg:hidden" />
             <div className="absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-navy-950 via-navy-950/75 to-transparent lg:block" />
           </div>
@@ -105,13 +108,55 @@ export function HomeHero() {
             </div>
           </div>
 
-          {/* Audience badge — desktop only */}
-          <div
-            className="anim-fade-up absolute bottom-40 right-8 hidden max-w-[15rem] rounded-2xl border border-white/15 bg-navy-950/60 p-5 backdrop-blur lg:block"
-            style={d(1.45)}
-          >
-            <Icon name="shield" className="h-7 w-7 text-gold-300" />
-            <p className="mt-2 font-display font-semibold leading-snug">For individuals, families, businesses &amp; corporates</p>
+          {/* Protection card — shield draws itself, then the check (desktop only) */}
+          <div className="anim-fade-up absolute right-8 top-12 hidden w-[17.5rem] lg:block xl:right-14" style={d(1.4)}>
+            <div className="anim-float rounded-2xl border border-white/15 bg-navy-950/65 p-5 shadow-lift backdrop-blur-md">
+              <div className="flex items-center gap-3.5">
+                <svg viewBox="0 0 48 48" className="h-12 w-12 shrink-0" aria-hidden>
+                  <path
+                    pathLength={100}
+                    className="anim-draw"
+                    style={d(1.6)}
+                    d="M24 4 8 10v11c0 10 6.8 18.4 16 21 9.2-2.6 16-11 16-21V10Z"
+                    fill="none"
+                    stroke="#DFBE65"
+                    strokeWidth={2.5}
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    pathLength={100}
+                    className="anim-draw"
+                    style={d(2.4)}
+                    d="m16.5 24 5 5 10-10.5"
+                    fill="none"
+                    stroke="#FFFFFF"
+                    strokeWidth={3}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <div>
+                  <p className="font-display font-semibold leading-snug">Protection that stays with you</p>
+                  <p className="mt-0.5 text-xs text-navy-200">Advice · Servicing · Claims support</p>
+                </div>
+              </div>
+              <ul className="mt-4 space-y-2 border-t border-white/10 pt-4 text-sm text-navy-100">
+                {["Cover explained clearly", "Renewal reminders", "Guidance at claim time"].map((t, i) => (
+                  <li key={t} className="anim-fade-up flex items-center gap-2.5" style={d(2.2 + i * 0.15)}>
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Audience badge — desktop only; floats out of step with the card above */}
+          <div className="anim-fade-up absolute bottom-40 right-8 hidden max-w-[15rem] lg:block" style={d(1.6)}>
+            <div className="anim-float rounded-2xl border border-white/15 bg-navy-950/60 p-5 backdrop-blur" style={{ animationDelay: "-3.5s" }}>
+              <Icon name="users" className="h-7 w-7 text-gold-300" />
+              <p className="mt-2 font-display font-semibold leading-snug">For individuals, families, businesses &amp; corporates</p>
+            </div>
           </div>
         </div>
 

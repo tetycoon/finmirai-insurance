@@ -14,6 +14,7 @@ import { articles } from "@/content/articles";
 import { images } from "@/content/images";
 import { corporateProducts, personalProducts, productHref } from "@/content/products";
 import { site, telHref, whatsappHref } from "@/content/site";
+import { reveal, stagger } from "@/lib/motion";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -45,6 +46,7 @@ const advisorPillars: { title: string; icon: IconName }[] = [
   { title: "Long-term professional development", icon: "compass" },
 ];
 
+
 export default function HomePage() {
   return (
     <>
@@ -54,9 +56,9 @@ export default function HomePage() {
       {/* 2 — Trust strip */}
       <section aria-label="Why Finmirai" className="border-b border-navy-100 bg-white">
         <div className="container grid divide-y divide-navy-100 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
-          {trustPoints.map((t) => (
-            <div key={t.title} className="flex items-start gap-4 py-6 lg:px-6 lg:first:pl-0">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold-50 text-gold-700 ring-1 ring-gold-200">
+          {trustPoints.map((t, i) => (
+            <div key={t.title} {...reveal(stagger(i))} className="group flex items-start gap-4 py-6 lg:px-6 lg:first:pl-0">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold-50 text-gold-700 ring-1 ring-gold-200 transition duration-300 group-hover:bg-navy-900 group-hover:text-gold-300 group-hover:ring-navy-900">
                 <Icon name={t.icon} className="h-5 w-5" />
               </span>
               <div>
@@ -70,7 +72,7 @@ export default function HomePage() {
 
       {/* 3 — Insurance solutions */}
       <Section labelledBy="personal-heading">
-        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div {...reveal()} className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
             id="personal-heading"
             eyebrow="Insurance solutions"
@@ -82,8 +84,10 @@ export default function HomePage() {
           </ButtonLink>
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {personalProducts.map((p) => (
-            <ProductCard key={p.slug} product={p} />
+          {personalProducts.map((p, i) => (
+            <div key={p.slug} {...reveal(stagger(i))} className="h-full">
+              <ProductCard product={p} />
+            </div>
           ))}
         </div>
       </Section>
@@ -91,7 +95,7 @@ export default function HomePage() {
       {/* 4 — Business & corporate */}
       <Section tone="navy" labelledBy="corporate-heading" className="relative overflow-hidden">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-5">
+          <div {...reveal()} className="lg:col-span-5">
             <SectionHeading
               id="corporate-heading"
               light
@@ -110,17 +114,20 @@ export default function HomePage() {
           </div>
           <div className="lg:col-span-7">
             <ul className="grid gap-3 sm:grid-cols-2">
-              {corporateProducts.map((p) => (
-                <li key={p.slug}>
-                  <Link href={productHref(p)} className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-gold-300/60 hover:bg-white/[0.08]">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gold-400/15 text-gold-300">
+              {corporateProducts.map((p, i) => (
+                <li key={p.slug} {...reveal(stagger(i, 70), "right")}>
+                  <Link
+                    href={productHref(p)}
+                    className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-gold-300/60 hover:bg-white/[0.08]"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gold-400/15 text-gold-300 transition duration-300 group-hover:bg-gold-400 group-hover:text-navy-950">
                       <Icon name={p.icon} className="h-5 w-5" />
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block font-display font-semibold text-white">{p.name}</span>
                       <span className="block truncate text-sm text-navy-300">{p.cardSummary}</span>
                     </span>
-                    <Icon name="chevronRight" className="h-4 w-4 shrink-0 text-navy-400 group-hover:text-gold-300" />
+                    <Icon name="chevronRight" className="h-4 w-4 shrink-0 text-navy-400 transition duration-300 group-hover:translate-x-1 group-hover:text-gold-300" />
                   </Link>
                 </li>
               ))}
@@ -132,38 +139,49 @@ export default function HomePage() {
       {/* 5 — Claims */}
       <Section labelledBy="claims-heading">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="relative order-last aspect-[4/3] overflow-hidden rounded-3xl lg:order-first lg:col-span-5 lg:aspect-[4/5]">
+          <div
+            {...reveal(0, "zoom")}
+            className="relative order-last aspect-[4/3] overflow-hidden rounded-3xl lg:order-first lg:col-span-5 lg:aspect-[4/5]"
+          >
             <Image src={images.supportDesk.src} alt={images.supportDesk.alt} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
           </div>
           <div className="lg:col-span-7">
-            <SectionHeading
-              id="claims-heading"
-              eyebrow="Claims support"
-              title="We don't disappear after the policy is issued."
-              intro="Insurance matters most when something goes wrong. Finmirai can guide you through the information and documentation needed for the claims process, subject to policy terms and the insurer's process."
-            />
+            <div {...reveal()}>
+              <SectionHeading
+                id="claims-heading"
+                eyebrow="Claims support"
+                title="We don't disappear after the policy is issued."
+                intro="Insurance matters most when something goes wrong. Finmirai can guide you through the information and documentation needed for the claims process, subject to policy terms and the insurer's process."
+              />
+            </div>
             <ol className="mt-8 grid gap-4 sm:grid-cols-2">
               {claimsJourney.map((s, i) => (
-                <li key={s.title} className="rounded-xl border border-navy-100 bg-mist p-5">
-                  <span className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-navy-900 text-sm font-bold text-gold-300">{i + 1}</span>
-                    <h3 className="font-semibold">{s.title}</h3>
-                  </span>
-                  <p className="mt-2 text-sm leading-relaxed text-navy-600">{s.text}</p>
+                <li key={s.title} {...reveal(100 + stagger(i))}>
+                  <div className="group h-full rounded-xl border border-navy-100 bg-mist p-5 transition duration-300 hover:-translate-y-0.5 hover:border-gold-300 hover:bg-white hover:shadow-card">
+                    <span className="flex items-center gap-3">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-navy-900 text-sm font-bold text-gold-300 transition duration-300 group-hover:bg-gold-400 group-hover:text-navy-950">
+                        {i + 1}
+                      </span>
+                      <h3 className="font-semibold">{s.title}</h3>
+                    </span>
+                    <p className="mt-2 text-sm leading-relaxed text-navy-600">{s.text}</p>
+                  </div>
                 </li>
               ))}
             </ol>
-            <p className="mt-5 text-sm text-navy-500">Claim assessment and settlement are decided by the insurer under the policy terms.</p>
-            <ButtonLink href="/claims-support" variant="navy" size="lg" iconRight="arrowRight" className="mt-6">
-              Get Claims Support
-            </ButtonLink>
+            <div {...reveal(200)}>
+              <p className="mt-5 text-sm text-navy-500">Claim assessment and settlement are decided by the insurer under the policy terms.</p>
+              <ButtonLink href="/claims-support" variant="navy" size="lg" iconRight="arrowRight" className="mt-6">
+                Get Claims Support
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </Section>
 
       {/* 6 — Advisor */}
       <Section tone="mist" labelledBy="advisor-heading">
-        <div className="overflow-hidden rounded-3xl bg-white shadow-card lg:grid lg:grid-cols-2">
+        <div {...reveal()} className="overflow-hidden rounded-3xl bg-white shadow-card lg:grid lg:grid-cols-2">
           <div className="p-8 sm:p-12">
             <SectionHeading
               id="advisor-heading"
@@ -172,9 +190,9 @@ export default function HomePage() {
               intro="For people who want to build a professional insurance practice — with training, product access and support behind them."
             />
             <ul className="mt-8 space-y-3">
-              {advisorPillars.map((p) => (
-                <li key={p.title} className="flex items-center gap-3 text-navy-800">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy-50 text-navy-800">
+              {advisorPillars.map((p, i) => (
+                <li key={p.title} {...reveal(150 + stagger(i, 60), "left")} className="group flex items-center gap-3 text-navy-800">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy-50 text-navy-800 transition duration-300 group-hover:bg-navy-900 group-hover:text-gold-300">
                     <Icon name={p.icon} className="h-[18px] w-[18px]" />
                   </span>
                   {p.title}
@@ -190,7 +208,7 @@ export default function HomePage() {
               </ButtonLink>
             </div>
           </div>
-          <div className="relative min-h-[300px]">
+          <div {...reveal(150, "zoom")} className="relative min-h-[300px] overflow-hidden">
             <Image src={images.teamMeeting.src} alt={images.teamMeeting.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
         </div>
@@ -199,8 +217,10 @@ export default function HomePage() {
       {/* 7 — Leadership */}
       <Section labelledBy="leader-heading">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-          <LeaderPortrait className="aspect-[4/5] w-full max-w-sm lg:col-span-4" />
-          <div className="lg:col-span-8 lg:pl-6">
+          <div {...reveal(0, "left")} className="lg:col-span-4">
+            <LeaderPortrait className="aspect-[4/5] w-full max-w-sm" />
+          </div>
+          <div {...reveal(120)} className="lg:col-span-8 lg:pl-6">
             <p className="eyebrow">Leadership</p>
             <h2 id="leader-heading" className="mt-3 text-3xl font-bold sm:text-4xl">
               {site.leadership.name}
@@ -225,7 +245,7 @@ export default function HomePage() {
 
       {/* 8 — Knowledge centre */}
       <Section tone="mist" labelledBy="kc-heading">
-        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div {...reveal()} className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
             id="kc-heading"
             eyebrow="Knowledge centre"
@@ -237,15 +257,17 @@ export default function HomePage() {
           </ButtonLink>
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {articles.slice(0, 3).map((a) => (
-            <ArticleCard key={a.slug} article={a} />
+          {articles.slice(0, 3).map((a, i) => (
+            <div key={a.slug} {...reveal(stagger(i, 100))} className="h-full">
+              <ArticleCard article={a} />
+            </div>
           ))}
         </div>
       </Section>
 
       {/* 9 — Final conversion */}
       <Section labelledBy="final-heading">
-        <div className="grid gap-10 overflow-hidden rounded-3xl bg-navy-900 p-6 text-white sm:p-10 lg:grid-cols-12 lg:p-14">
+        <div {...reveal()} className="grid gap-10 overflow-hidden rounded-3xl bg-navy-900 p-6 text-white sm:p-10 lg:grid-cols-12 lg:p-14">
           <div className="lg:col-span-6">
             <p className="eyebrow eyebrow-light">Get in touch</p>
             <h2 id="final-heading" className="mt-3 text-3xl font-bold text-white sm:text-5xl">
@@ -266,7 +288,7 @@ export default function HomePage() {
               </ButtonLink>
             </div>
           </div>
-          <div className="rounded-2xl bg-white p-6 text-ink sm:p-8 lg:col-span-6">
+          <div {...reveal(150, "right")} className="rounded-2xl bg-white p-6 text-ink sm:p-8 lg:col-span-6">
             <h3 className="text-xl font-bold">Request a callback</h3>
             <p className="mb-5 mt-1 text-sm text-navy-600">Takes less than a minute.</p>
             <CallbackForm />

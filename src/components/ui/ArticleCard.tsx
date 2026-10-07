@@ -7,15 +7,15 @@ export function ArticleCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/knowledge-centre/${article.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-navy-100 bg-white transition hover:-translate-y-0.5 hover:shadow-lift"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-navy-100 bg-white transition duration-300 ease-out hover:-translate-y-1 hover:border-gold-300 hover:shadow-lift"
     >
-      <div className="relative aspect-[16/9] bg-navy-100">
+      <div className="relative aspect-[16/9] overflow-hidden bg-navy-100">
         <Image
           src={article.image.src}
           alt={article.image.alt}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover"
+          className="object-cover transition duration-700 ease-out group-hover:scale-[1.05]"
         />
         <span className="absolute left-4 top-4 rounded-full bg-white/95 px-2.5 py-1 text-xs font-semibold text-navy-800">{article.category}</span>
       </div>

@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
+import { motionScript } from "@/lib/motionScript";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/content/site";
 import { organizationSchema } from "@/lib/structuredData";
@@ -37,11 +38,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // attributes to <html>/<body> before React loads. This only ignores attribute differences on these two
     // elements — mismatches anywhere inside the page are still reported.
     <html lang="en-IN" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Enables scroll-reveal hidden states only when JS runs (no-JS visitors see everything). */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body suppressHydrationWarning>
         <Header />
         <main id="main">{children}</main>
         <Footer />
         <MobileActionBar />
+        {/* Scroll-reveal + parallax: runs as soon as the HTML is parsed, without waiting for hydration */}
+        <script dangerouslySetInnerHTML={{ __html: motionScript }} />
         <JsonLd data={organizationSchema()} />
         {GA_ID ? (
           <>
