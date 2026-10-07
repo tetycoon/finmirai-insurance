@@ -164,7 +164,7 @@ export function Header() {
 
           <div className="flex items-center gap-2">
             <ButtonLink
-              href="/get-insurance-assistance"
+              href="/get-a-quote"
               variant="gold"
               size="sm"
               iconRight="arrowRight"
@@ -228,7 +228,7 @@ export function Header() {
             ))}
           </ul>
           <div className="mt-6 grid gap-3">
-            <ButtonLink href="/get-insurance-assistance" variant="gold" size="lg" iconRight="arrowRight" className="font-bold">
+            <ButtonLink href="/get-a-quote" variant="gold" size="lg" iconRight="arrowRight" className="font-bold">
               Get a Quote
             </ButtonLink>
             <ButtonLink href="/become-an-advisor" variant="outline" size="lg">

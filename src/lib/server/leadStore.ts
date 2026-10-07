@@ -41,6 +41,7 @@ export interface LeadRepository {
 
 const REF_PREFIX: Record<LeadType, string> = {
   insurance: "INS",
+  quote: "QTE",
   corporate: "CORP",
   claim: "CLM",
   advisor: "ADV",
@@ -49,6 +50,7 @@ const REF_PREFIX: Record<LeadType, string> = {
 
 const CATEGORY: Record<LeadType, LeadRecord["category"]> = {
   insurance: "sales",
+  quote: "sales",
   corporate: "sales",
   claim: "service",
   advisor: "recruitment",

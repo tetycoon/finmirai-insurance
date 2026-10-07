@@ -13,6 +13,7 @@ import {
   employeeCountOptions,
   experienceOptions,
   insuranceLeadSchema,
+  quoteLeadSchema,
 } from "@/lib/schemas";
 import { Checkbox, ChoiceGroup, ConsentField, FormNote, FormRow, LeadForm, SelectField, TextArea, TextField } from "./FormKit";
 
@@ -38,6 +39,38 @@ export function InsuranceEnquiryForm({ defaultType = "" }: { defaultType?: strin
       <SelectField name="insuranceType" label="What do you need help with?" options={insuranceTypeOptions} required defaultValue={validDefault} />
       <ChoiceGroup name="contactPreference" legend="How should we contact you?" options={contactPreferenceOptions} columns={3} required defaultValue="call" />
       <TextArea name="message" label="Anything you'd like us to know?" rows={3} maxLength={1000} placeholder="For example: family members to cover, renewal date, existing policy…" />
+      <ConsentField />
+    </LeadForm>
+  );
+}
+
+/** "Get a Quote" form — six fields + consent, gold Submit Enquiry button. */
+export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
+  const validDefault = insuranceTypeOptions.some((o) => o.value === defaultType) ? defaultType : "";
+  return (
+    <LeadForm
+      type="quote"
+      schema={quoteLeadSchema}
+      prominentSubmit
+      submitLabel="Submit Enquiry"
+      successTitle="Thank you! Your enquiry has been submitted."
+      successText={
+        <>
+          <p>A Finmirai advisor will review your details and contact you shortly to understand your needs and share suitable options and quotes.</p>
+          <p className="mt-2">Need help sooner? Call or WhatsApp us using the buttons below.</p>
+        </>
+      }
+    >
+      <TextField name="fullName" label="Full Name" required autoComplete="name" maxLength={80} placeholder="e.g. Priya Raman" />
+      <FormRow>
+        <TextField name="phone" label="Mobile Number" type="tel" required autoComplete="tel" inputMode="tel" placeholder="10-digit mobile number" />
+        <TextField name="email" label="Email Address" type="email" required autoComplete="email" inputMode="email" placeholder="you@example.com" />
+      </FormRow>
+      <FormRow>
+        <SelectField name="insuranceType" label="Insurance Type" options={insuranceTypeOptions} required defaultValue={validDefault} placeholder="Choose insurance type" />
+        <TextField name="city" label="City" required autoComplete="address-level2" maxLength={60} placeholder="e.g. Chennai" />
+      </FormRow>
+      <TextArea name="message" label="Message" rows={3} maxLength={500} placeholder="Briefly tell us what you need — e.g. family health cover for 4 members." />
       <ConsentField />
     </LeadForm>
   );

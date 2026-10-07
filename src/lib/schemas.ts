@@ -5,7 +5,7 @@ import { z } from "zod";
  * can never drift apart. Server-side validation is authoritative (Plan §15).
  */
 
-export const LEAD_TYPES = ["insurance", "corporate", "claim", "advisor", "callback"] as const;
+export const LEAD_TYPES = ["insurance", "quote", "corporate", "claim", "advisor", "callback"] as const;
 export type LeadType = (typeof LEAD_TYPES)[number];
 
 /** Version of the consent wording shown next to the checkbox. Bump when the text changes. */
@@ -85,6 +85,17 @@ export const insuranceLeadSchema = z.object({
   insuranceType: z.string({ required_error: "Please choose a type of insurance." }).trim().min(1, "Please choose a type of insurance.").max(60),
   contactPreference,
   message: optionalText(1000),
+  consent,
+});
+
+// ── Quote request (header "Get a Quote" → /get-a-quote) ─────────────────
+export const quoteLeadSchema = z.object({
+  fullName: trimmed(2, 80, "your full name"),
+  phone: phoneSchema,
+  email: emailRequired,
+  insuranceType: z.string({ required_error: "Please choose a type of insurance." }).trim().min(1, "Please choose a type of insurance.").max(60),
+  city: trimmed(2, 60, "your city"),
+  message: optionalText(500),
   consent,
 });
 
@@ -199,6 +210,7 @@ export const callbackLeadSchema = z.object({
 
 export const leadSchemas = {
   insurance: insuranceLeadSchema,
+  quote: quoteLeadSchema,
   corporate: corporateLeadSchema,
   claim: claimLeadSchema,
   advisor: advisorLeadSchema,

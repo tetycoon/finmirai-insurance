@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/insurance-solutions", 0.9],
     ["/corporate-insurance", 0.9],
     ["/claims-support", 0.9],
+    ["/get-a-quote", 0.8],
     ["/get-insurance-assistance", 0.8],
     ["/become-an-advisor", 0.8],
     ["/become-an-advisor/training", 0.6],

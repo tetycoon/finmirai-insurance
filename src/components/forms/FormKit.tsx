@@ -33,6 +33,7 @@ export function LeadForm({
   successText,
   children,
   compact = false,
+  prominentSubmit = false,
 }: {
   type: LeadType;
   schema: ZodTypeAny;
@@ -42,6 +43,8 @@ export function LeadForm({
   successText: ReactNode;
   children: ReactNode;
   compact?: boolean;
+  /** Large gold full-width submit button (used on the Get a Quote page). */
+  prominentSubmit?: boolean;
 }) {
   const prefix = useId().replace(/:/g, "");
   const formRef = useRef<HTMLFormElement>(null);
@@ -166,7 +169,14 @@ export function LeadForm({
           </label>
         </div>
 
-        <Button type="submit" variant="navy" size="lg" className="w-full sm:w-auto" disabled={status === "submitting"} iconRight={status === "submitting" ? undefined : "arrowRight"}>
+        <Button
+          type="submit"
+          variant={prominentSubmit ? "gold" : "navy"}
+          size="lg"
+          className={prominentSubmit ? "w-full !min-h-14 text-lg font-bold shadow-md" : "w-full sm:w-auto"}
+          disabled={status === "submitting"}
+          iconRight={status === "submitting" ? undefined : "arrowRight"}
+        >
           {status === "submitting" ? "Sending…" : submitLabel}
         </Button>
       </form>
