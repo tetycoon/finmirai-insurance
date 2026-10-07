@@ -33,8 +33,11 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${manrope.variable}`}>
-      <body>
+    // suppressHydrationWarning: browser extensions (e.g. ColorZilla's `cz-shortcut-listen`, Grammarly) add
+    // attributes to <html>/<body> before React loads. This only ignores attribute differences on these two
+    // elements — mismatches anywhere inside the page are still reported.
+    <html lang="en-IN" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <Header />
         <main id="main">{children}</main>
         <Footer />
