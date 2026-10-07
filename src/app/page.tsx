@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CallbackForm } from "@/components/forms/Forms";
+import { HomeHero } from "@/components/home/HomeHero";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { ButtonLink, buttonClasses } from "@/components/ui/Button";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { LeaderPortrait } from "@/components/ui/LeaderPortrait";
-import { HeroPattern } from "@/components/ui/PageHero";
 import { Pending } from "@/components/ui/Pending";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { Section, SectionHeading } from "@/components/ui/Section";
@@ -22,15 +22,6 @@ export const metadata = buildMetadata({
   description: site.description,
   path: "/",
 });
-
-const quickNeeds: { label: string; href: string; icon: IconName }[] = [
-  { label: "Health", href: "/insurance-solutions/health-insurance", icon: "heartPulse" },
-  { label: "Motor", href: "/insurance-solutions/motor-insurance", icon: "car" },
-  { label: "Life", href: "/insurance-solutions/life-insurance", icon: "umbrella" },
-  { label: "Travel", href: "/insurance-solutions/travel-insurance", icon: "plane" },
-  { label: "Business", href: "/corporate-insurance", icon: "briefcase" },
-  { label: "Make a claim", href: "/claims-support", icon: "headset" },
-];
 
 const trustPoints: { title: string; text: string; icon: IconName }[] = [
   { title: "Professional Expertise", text: "Advice grounded in risk, not in a sales script.", icon: "compass" },
@@ -57,79 +48,8 @@ const advisorPillars: { title: string; icon: IconName }[] = [
 export default function HomePage() {
   return (
     <>
-      {/* 1 — Hero */}
-      <section className="relative overflow-hidden bg-navy-900 text-white">
-        <HeroPattern />
-        <div className="container relative grid gap-12 pb-14 pt-10 sm:pb-20 sm:pt-14 lg:grid-cols-12 lg:items-center lg:gap-10 lg:pb-24 lg:pt-20">
-          <div className="lg:col-span-6">
-            <p className="eyebrow eyebrow-light">{site.legalName}</p>
-            <h1 className="mt-4 text-[2.5rem] font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-[3.6rem]">
-              Insurance Solutions. <span className="text-gold-300">Professional Advice.</span> Lasting Relationships.
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-100">
-              Insurance is not just about buying a policy. It is about understanding risk, choosing appropriate protection and having support
-              when you need it.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/get-insurance-assistance" variant="gold" size="lg" iconRight="arrowRight">
-                Get Insurance Assistance
-              </ButtonLink>
-              <ButtonLink href="/become-an-advisor" variant="outlineLight" size="lg">
-                Become a Finmirai Advisor
-              </ButtonLink>
-            </div>
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[0.9375rem] text-navy-200">
-              <TrackedLink kind="call" location="hero" href={telHref()} className="inline-flex items-center gap-2 hover:text-white">
-                <Icon name="phone" className="h-4 w-4 text-gold-300" /> {site.contact.phoneDisplay}
-              </TrackedLink>
-              <TrackedLink kind="whatsapp" location="hero" href={whatsappHref()} className="inline-flex items-center gap-2 hover:text-white">
-                <Icon name="whatsapp" className="h-4 w-4 text-gold-300" /> Chat on WhatsApp
-              </TrackedLink>
-            </div>
-          </div>
-
-          <div className="relative lg:col-span-6">
-            <div className="grid grid-cols-5 gap-3 sm:gap-4">
-              <div className="relative col-span-3 aspect-[3/4] overflow-hidden rounded-3xl">
-                <Image src={images.familyMotherDaughter.src} alt={images.familyMotherDaughter.alt} fill priority sizes="(min-width: 1024px) 30vw, 60vw" className="object-cover object-[60%_center]" />
-              </div>
-              <div className="col-span-2 flex flex-col gap-3 sm:gap-4">
-                <div className="relative flex-1 overflow-hidden rounded-3xl">
-                  <Image src={images.businessOwner.src} alt={images.businessOwner.alt} fill priority sizes="(min-width: 1024px) 20vw, 40vw" className="object-cover" />
-                </div>
-                <div className="rounded-3xl border border-gold-400/40 bg-navy-800 p-4 sm:p-5">
-                  <Icon name="shield" className="h-7 w-7 text-gold-300" />
-                  <p className="mt-2 font-display text-sm font-semibold leading-snug text-white sm:text-base">
-                    For individuals, families, businesses &amp; corporates
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Quick routes — reach the right page in one click */}
-        <div className="relative border-t border-white/10 bg-navy-950/60">
-          <div className="container py-5">
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-6">
-              <p className="shrink-0 text-sm font-semibold text-navy-200">What do you need help with?</p>
-              <ul className="grid grid-cols-3 gap-2 sm:grid-cols-6 lg:flex lg:flex-wrap">
-                {quickNeeds.map((q) => (
-                  <li key={q.label}>
-                    <Link
-                      href={q.href}
-                      className="flex flex-col items-center gap-1.5 rounded-xl border border-white/15 px-3 py-2.5 text-center text-sm font-medium text-white transition hover:border-gold-300 hover:bg-white/5 lg:flex-row lg:py-2"
-                    >
-                      <Icon name={q.icon} className="h-[18px] w-[18px] text-gold-300" />
-                      {q.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 1 — Hero (animated) */}
+      <HomeHero />
 
       {/* 2 — Trust strip */}
       <section aria-label="Why Finmirai" className="border-b border-navy-100 bg-white">

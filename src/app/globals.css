@@ -50,6 +50,84 @@
   }
 }
 
+/* ───────────── Hero entrance animations ─────────────
+   Applied with an inline animation-delay to stagger. All are disabled for reduced motion. */
+@layer utilities {
+  .anim-rise {
+    animation: fin-rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .anim-fade-up {
+    animation: fin-fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .anim-pop {
+    animation: fin-pop 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  }
+  .anim-kenburns {
+    animation: fin-kenburns 9s ease-out both;
+  }
+  .anim-bar {
+    animation: fin-bar 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    transform-box: fill-box;
+  }
+}
+
+@keyframes fin-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fin-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fin-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-25deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes fin-kenburns {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes fin-bar {
+  from {
+    opacity: 0;
+    transform: translateX(35%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-rise,
+  .anim-fade-up,
+  .anim-pop,
+  .anim-kenburns,
+  .anim-bar {
+    animation: none !important;
+  }
+}
+
 @layer components {
   /* Default single-column grids to minmax(0,1fr) so long/nowrap content can't widen the track
      beyond the viewport on phones. grid-cols-* utilities (utilities layer) still override this. */
