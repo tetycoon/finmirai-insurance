@@ -20,6 +20,8 @@ export const images = {
     "Father holding his wife and baby close in a warm, reassuring family embrace",
   ),
   nurseHospital: img("nurse-hospital", "Smiling South Indian nurse in scrubs and cap at a hospital ward desk"),
+  coupleNewCar: img("couple-new-car", "Indian couple standing proudly in front of their car with the doors open"),
+  grandmotherBabyHome: img("grandmother-baby-home", "Grandmother in a silk saree smiling as she tucks a baby into bed at home"),
   teamMeeting: img("team-meeting", "Professional presenting to colleagues in a meeting room"),
   corporateTeam: img("corporate-team", "Corporate team gathered in a boardroom"),
   businessOwner: img("business-owner", "Business owner working at his office desk"),

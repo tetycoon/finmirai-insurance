@@ -165,7 +165,7 @@ export const products: Product[] = [
     name: "Motor Insurance",
     shortName: "Motor",
     icon: "car",
-    image: images.carCity,
+    image: images.coupleNewCar,
     metaTitle: "Motor Insurance for Cars & Two-Wheelers – Renewal Help",
     metaDescription:
       "Car and two-wheeler insurance guidance from Finmirai. Understand third-party and own-damage cover, IDV, No Claim Bonus and add-ons, and get help at renewal and claim time.",
@@ -264,7 +264,7 @@ export const products: Product[] = [
     name: "Home Insurance",
     shortName: "Home",
     icon: "home",
-    image: images.apartments,
+    image: images.grandmotherBabyHome,
     metaTitle: "Home Insurance for Your House & Belongings",
     metaDescription:
       "Protect your home structure and contents against fire, natural calamities, burglary and more. Finmirai helps homeowners and tenants choose suitable home insurance.",
