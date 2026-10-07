@@ -11,6 +11,15 @@ export const images = {
   familyMotherDaughter: img("family-mother-daughter", "Mother and young daughter laughing together on a sofa at home"),
   familyFour: img("family-four", "Indian family of four standing together and smiling"),
   elderGrandson: img("elder-grandson", "Elderly man sitting beside his grandson"),
+  tamilFamilyTraditional: img(
+    "tamil-family-traditional",
+    "Smiling Tamil family in traditional veshti and silk saree, the father holding their young son",
+  ),
+  familyFatherProtect: img(
+    "family-father-protect",
+    "Father holding his wife and baby close in a warm, reassuring family embrace",
+  ),
+  nurseHospital: img("nurse-hospital", "Smiling South Indian nurse in scrubs and cap at a hospital ward desk"),
   teamMeeting: img("team-meeting", "Professional presenting to colleagues in a meeting room"),
   corporateTeam: img("corporate-team", "Corporate team gathered in a boardroom"),
   businessOwner: img("business-owner", "Business owner working at his office desk"),
