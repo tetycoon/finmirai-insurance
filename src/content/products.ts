@@ -165,7 +165,7 @@ export const products: Product[] = [
     name: "Motor Insurance",
     shortName: "Motor",
     icon: "car",
-    image: images.coupleNewCar,
+    image: images.motorCarCollision,
     metaTitle: "Motor Insurance for Cars & Two-Wheelers – Renewal Help",
     metaDescription:
       "Car and two-wheeler insurance guidance from Finmirai. Understand third-party and own-damage cover, IDV, No Claim Bonus and add-ons, and get help at renewal and claim time.",

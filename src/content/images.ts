@@ -26,7 +26,7 @@ export const images = {
     "Engineer in a hard hat and safety vest reviewing plans at an industrial construction site with a crane at sunset",
   ),
   propertyFire: img("property-fire", "Fire and heavy smoke engulfing a commercial building"),
-  coupleNewCar: img("couple-new-car", "Indian couple standing proudly in front of their car with the doors open"),
+  motorCarCollision: img("motor-car-collision", "Two cars with damaged front bumpers after a minor collision on the road"),
   teamMeeting: img("team-meeting", "Professional presenting to colleagues in a meeting room"),
   corporateTeam: img("corporate-team", "Corporate team gathered in a boardroom"),
   businessOwner: img("business-owner", "Business owner working at his office desk"),
