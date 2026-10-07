@@ -51,6 +51,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
     <LeadForm
       type="quote"
       schema={quoteLeadSchema}
+      compact
       prominentSubmit
       submitLabel="Submit Enquiry"
       successTitle="Thank you! Your enquiry has been submitted."
@@ -70,7 +71,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
         <SelectField name="insuranceType" label="Insurance Type" options={insuranceTypeOptions} required defaultValue={validDefault} placeholder="Choose insurance type" />
         <TextField name="city" label="City" required autoComplete="address-level2" maxLength={60} placeholder="e.g. Chennai" />
       </FormRow>
-      <TextArea name="message" label="Message" rows={3} maxLength={500} placeholder="Briefly tell us what you need — e.g. family health cover for 4 members." />
+      <TextArea name="message" label="Message" rows={2} maxLength={500} placeholder="Briefly tell us what you need — e.g. family health cover for 4 members." />
       <ConsentField />
     </LeadForm>
   );
