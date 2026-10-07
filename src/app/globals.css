@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-navy-900;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold-400 ring-offset-2;
+  }
+  ::selection {
+    @apply bg-gold-200 text-navy-900;
+  }
+  /* Leave room for the fixed mobile action bar */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: 4.25rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Default single-column grids to minmax(0,1fr) so long/nowrap content can't widen the track
+     beyond the viewport on phones. grid-cols-* utilities (utilities layer) still override this. */
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-gold-600;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-6 bg-gold-500;
+  }
+  .eyebrow-light {
+    @apply text-gold-300;
+  }
+  .eyebrow-light::before {
+    @apply bg-gold-300;
+  }
+
+  /* Long-form text (legal pages, articles) */
+  .prose-fin {
+    @apply max-w-prose text-[1.0625rem] leading-relaxed text-navy-800;
+  }
+  .prose-fin h2 {
+    @apply mb-3 mt-10 text-2xl font-bold;
+  }
+  .prose-fin h3 {
+    @apply mb-2 mt-7 text-lg font-semibold;
+  }
+  .prose-fin p {
+    @apply mb-4;
+  }
+  .prose-fin ul {
+    @apply mb-5 list-disc space-y-1.5 pl-5 marker:text-gold-500;
+  }
+  .prose-fin ol {
+    @apply mb-5 list-decimal space-y-1.5 pl-5 marker:font-semibold marker:text-navy-500;
+  }
+  .prose-fin a {
+    @apply font-medium text-navy-700 underline decoration-gold-400 underline-offset-2 hover:text-navy-900;
+  }
+  .prose-fin strong {
+    @apply font-semibold text-navy-900;
+  }
+
+  .field-input {
+    @apply block w-full rounded-lg border border-navy-200 bg-white px-3.5 py-2.5 text-[0.9375rem] text-navy-900 shadow-sm transition placeholder:text-navy-300 focus:border-navy-500 focus:outline-none focus:ring-2 focus:ring-gold-300;
+  }
+  .field-input[aria-invalid="true"] {
+    @apply border-red-500 focus:ring-red-200;
+  }
+}
