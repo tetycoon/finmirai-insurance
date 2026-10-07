@@ -365,7 +365,7 @@ export const products: Product[] = [
     name: "Property & Fire Insurance",
     shortName: "Property & Fire",
     icon: "flame",
-    image: images.warehouse,
+    image: images.propertyFire,
     metaTitle: "Property & Fire Insurance for Businesses",
     metaDescription:
       "Protect buildings, plant, machinery and stock against fire and allied perils. Finmirai helps businesses value assets correctly and structure property insurance.",
@@ -570,7 +570,7 @@ export const products: Product[] = [
     name: "Engineering Insurance",
     shortName: "Engineering",
     icon: "cog",
-    image: images.construction,
+    image: images.engineeringConstructionSite,
     metaTitle: "Engineering & Industrial Insurance – CAR, EAR & Machinery",
     metaDescription:
       "Contractor's All Risk, Erection All Risk, machinery breakdown and equipment insurance. Finmirai helps contractors, project owners and manufacturers structure engineering covers.",
@@ -619,7 +619,7 @@ export const products: Product[] = [
     name: "Cyber Insurance",
     shortName: "Cyber",
     icon: "lock",
-    image: images.cyberLock,
+    image: images.cyberInsuranceNetwork,
     metaTitle: "Cyber Insurance for Businesses",
     metaDescription:
       "Cyber insurance helps businesses respond to data breaches, ransomware and cyber incidents. Learn what cyber cover typically includes and how Finmirai can help you assess it.",

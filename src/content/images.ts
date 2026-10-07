@@ -20,6 +20,12 @@ export const images = {
   accidentArmCast: img("accident-arm-cast", "Man in a hospital gown with his arm in a cast, supported by a helping arm"),
   healthDoctorNursePatient: img("health-doctor-nurse-patient", "Doctor and nurse smiling as they talk with a patient in a bright hospital corridor"),
   homeFamilyRoof: img("home-family-roof", "Family on their living-room sofa, the parents making a roof shape with their hands over their daughter"),
+  cyberInsuranceNetwork: img("cyber-insurance-network", "Hand holding a glowing digital network with the words Cyber Insurance"),
+  engineeringConstructionSite: img(
+    "engineering-construction-site",
+    "Engineer in a hard hat and safety vest reviewing plans at an industrial construction site with a crane at sunset",
+  ),
+  propertyFire: img("property-fire", "Fire and heavy smoke engulfing a commercial building"),
   coupleNewCar: img("couple-new-car", "Indian couple standing proudly in front of their car with the doors open"),
   teamMeeting: img("team-meeting", "Professional presenting to colleagues in a meeting room"),
   corporateTeam: img("corporate-team", "Corporate team gathered in a boardroom"),
@@ -40,8 +46,5 @@ export const images = {
   factoryFloor: img("factory-floor", "Manufacturing shop floor with production machinery"),
   machinery: img("machinery", "Industrial machinery inside a production facility"),
   garmentUnit: img("garment-unit", "Workers at tables in a garment manufacturing unit"),
-  construction: img("construction", "Multi-storey building under construction"),
-  warehouse: img("warehouse", "Warehouse with tall racks of stored goods"),
-  cyberLock: img("cyber-lock", "Padlock and payment cards resting on a laptop keyboard"),
   chennaiCoast: img("chennai-coast", "View over Chennai towards the coastline"),
 } satisfies Record<string, SiteImage>;
