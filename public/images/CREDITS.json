@@ -70,11 +70,6 @@
         "source":  "https://unsplash.com/photos/a16y20-33ho"
     },
     {
-        "file":  "/images/airport-terminal.jpg",
-        "photographer":  "Zoshua Colah",
-        "source":  "https://unsplash.com/photos/8zD5s1lO2F4"
-    },
-    {
         "file":  "/images/apartments.jpg",
         "photographer":  "Abhijit M",
         "source":  "https://unsplash.com/photos/Rcd24CwrEt4"
@@ -140,23 +135,8 @@
         "source":  "https://unsplash.com/photos/7InTBVhcDN0"
     },
     {
-        "file":  "/images/nurse-hospital.jpg",
-        "photographer":  "EqualStock",
-        "source":  "https://unsplash.com/photos/YkRpDEdkkRY"
-    },
-    {
         "file":  "/images/couple-new-car.jpg",
         "photographer":  "Anil Sharma",
         "source":  "https://unsplash.com/photos/sVyjFquHmf0"
-    },
-    {
-        "file":  "/images/grandmother-baby-home.jpg",
-        "photographer":  "Rohit Dey",
-        "source":  "https://unsplash.com/photos/m2wHjaS4j0Y"
-    },
-    {
-        "file":  "/images/ambulance-city.jpg",
-        "photographer":  "Lalithmalhaar Gudi",
-        "source":  "https://unsplash.com/photos/T1C9zpFpky4"
     }
 ]

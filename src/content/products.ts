@@ -64,7 +64,7 @@ export const products: Product[] = [
     name: "Health Insurance",
     shortName: "Health",
     icon: "heartPulse",
-    image: images.nurseHospital,
+    image: images.healthDoctorNursePatient,
     metaTitle: "Health Insurance Advice for Individuals & Families",
     metaDescription:
       "Understand health insurance before you buy. Finmirai helps individuals and families in Chennai compare covers, waiting periods and limits, and supports you at renewal and claim time.",
@@ -214,7 +214,7 @@ export const products: Product[] = [
     name: "Travel Insurance",
     shortName: "Travel",
     icon: "plane",
-    image: images.airportTerminal,
+    image: images.travelPassportAirport,
     metaTitle: "Travel Insurance for International & Domestic Trips",
     metaDescription:
       "Travel insurance guidance for students, families and business travellers. Finmirai helps you check medical cover, trip disruption, baggage and visa requirements before you fly.",
@@ -264,7 +264,7 @@ export const products: Product[] = [
     name: "Home Insurance",
     shortName: "Home",
     icon: "home",
-    image: images.grandmotherBabyHome,
+    image: images.homeFamilyRoof,
     metaTitle: "Home Insurance for Your House & Belongings",
     metaDescription:
       "Protect your home structure and contents against fire, natural calamities, burglary and more. Finmirai helps homeowners and tenants choose suitable home insurance.",
@@ -314,7 +314,7 @@ export const products: Product[] = [
     name: "Personal Accident Insurance",
     shortName: "Personal Accident",
     icon: "bandage",
-    image: images.ambulanceCity,
+    image: images.accidentArmCast,
     metaTitle: "Personal Accident Insurance – Income & Disability Protection",
     metaDescription:
       "Personal accident insurance pays benefits for accidental death and disability. Finmirai explains how it complements health and life cover for you and your family.",

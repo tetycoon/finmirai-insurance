@@ -16,8 +16,8 @@ export default function ImageCreditsPage() {
       <PageHero crumbs={[{ name: "Legal", path: "/legal" }, { name: "Image Credits", path: "/legal/image-credits" }]} title="Image Credits" />
       <Section>
         <p className="max-w-2xl text-navy-700">
-          Photographs on this website are used under the Unsplash License. Images are illustrative and do not depict Finmirai customers or staff
-          unless stated.
+          The photographs listed below are used under the Unsplash License. Other images on this website were supplied by Finmirai. Images are
+          illustrative and do not depict Finmirai customers or staff unless stated.
         </p>
         <ul className="mt-8 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {credits.map((c) => (
