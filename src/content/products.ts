@@ -314,7 +314,7 @@ export const products: Product[] = [
     name: "Personal Accident Insurance",
     shortName: "Personal Accident",
     icon: "bandage",
-    image: images.familyFatherProtect,
+    image: images.ambulanceCity,
     metaTitle: "Personal Accident Insurance – Income & Disability Protection",
     metaDescription:
       "Personal accident insurance pays benefits for accidental death and disability. Finmirai explains how it complements health and life cover for you and your family.",

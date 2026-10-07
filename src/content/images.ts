@@ -15,10 +15,7 @@ export const images = {
     "tamil-family-traditional",
     "Smiling Tamil family in traditional veshti and silk saree, the father holding their young son",
   ),
-  familyFatherProtect: img(
-    "family-father-protect",
-    "Father holding his wife and baby close in a warm, reassuring family embrace",
-  ),
+  ambulanceCity: img("ambulance-city", "Ambulance speeding through a city street in India"),
   nurseHospital: img("nurse-hospital", "Smiling South Indian nurse in scrubs and cap at a hospital ward desk"),
   coupleNewCar: img("couple-new-car", "Indian couple standing proudly in front of their car with the doors open"),
   grandmotherBabyHome: img("grandmother-baby-home", "Grandmother in a silk saree smiling as she tucks a baby into bed at home"),
