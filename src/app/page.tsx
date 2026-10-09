@@ -6,7 +6,6 @@ import { ArticleCard } from "@/components/ui/ArticleCard";
 import { ButtonLink, buttonClasses } from "@/components/ui/Button";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { LeaderPortrait } from "@/components/ui/LeaderPortrait";
-import { Pending } from "@/components/ui/Pending";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { TrackedLink } from "@/components/ui/TrackedLink";
@@ -227,14 +226,7 @@ export default function HomePage() {
             </h2>
             <p className="mt-1 text-lg font-medium text-gold-700">{site.leadership.title}</p>
             <div className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-700">
-              {site.leadership.approvedBio ? (
-                <p>{site.leadership.approvedBio}</p>
-              ) : (
-                <p>
-                  {site.leadership.name} leads {site.legalName} as Managing Director and Principal Officer.{" "}
-                  <Pending label="Short approved profile" />
-                </p>
-              )}
+              <p>{site.leadership.bio[0]}</p>
             </div>
             <ButtonLink href="/about-us/leadership" variant="outline" iconRight="arrowRight" className="mt-7">
               Know more

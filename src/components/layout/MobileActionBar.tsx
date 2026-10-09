@@ -11,7 +11,7 @@ export function MobileActionBar() {
   return (
     <nav
       aria-label="Quick contact"
-      className="fixed inset-x-0 bottom-0 z-30 flex border-t border-navy-100 bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_16px_rgba(10,26,48,0.08)] backdrop-blur md:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 flex border-t border-navy-100 bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_16px_rgba(10,26,48,0.08)] md:hidden"
     >
       <TrackedLink kind="call" location="mobile_bar" href={telHref()} className={`${item} text-navy-800`}>
         <Icon name="phone" className="h-5 w-5" />

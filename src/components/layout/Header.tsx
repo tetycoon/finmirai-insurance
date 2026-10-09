@@ -94,7 +94,7 @@ export function Header() {
         </div>
       </div>
 
-      <div className={`border-b bg-white/95 backdrop-blur transition-shadow ${scrolled ? "border-navy-100 shadow-card" : "border-transparent"}`}>
+      <div className={`border-b bg-white/95 transition-shadow ${scrolled ? "border-navy-100 shadow-card" : "border-transparent"}`}>
         <div ref={navRef} className="container flex h-16 items-center justify-between gap-3 lg:h-[4.5rem] min-[1400px]:!max-w-[1360px]">
           <Logo />
 
@@ -108,10 +108,10 @@ export function Header() {
                       <Link
                         href={item.href}
                         aria-current={pathname === item.href ? "page" : undefined}
-                        className={`relative whitespace-nowrap rounded-md px-1.5 py-2 text-[0.875rem] min-[1400px]:px-2.5 font-medium transition hover:text-navy-900 ${active ? "text-navy-900" : "text-navy-600"}`}
+                        className={`relative inline-flex items-center whitespace-nowrap rounded-md px-1 py-2 text-[0.8125rem] min-[1400px]:px-2.5 min-[1400px]:text-[0.875rem] font-medium transition hover:text-navy-900 ${active ? "text-navy-900" : "text-navy-600"}`}
                       >
                         {item.label}
-                        {active ? <span className="absolute inset-x-1.5 -bottom-[1px] h-0.5 rounded bg-gold-400" /> : null}
+                        {active ? <span className="absolute inset-x-1 -bottom-[1px] min-[1400px]:inset-x-1.5 h-0.5 rounded bg-gold-400" /> : null}
                       </Link>
                     </li>
                   );
@@ -124,21 +124,21 @@ export function Header() {
                       aria-expanded={open === i}
                       aria-controls={`menu-${i}`}
                       onClick={() => setOpen(open === i ? null : i)}
-                      className={`relative inline-flex items-center gap-1 whitespace-nowrap rounded-md px-1.5 py-2 text-[0.875rem] min-[1400px]:px-2.5 font-medium transition hover:text-navy-900 ${active ? "text-navy-900" : "text-navy-600"}`}
+                      className={`relative inline-flex items-center gap-1 whitespace-nowrap rounded-md px-1 py-2 text-[0.8125rem] min-[1400px]:px-2.5 min-[1400px]:text-[0.875rem] font-medium transition hover:text-navy-900 ${active ? "text-navy-900" : "text-navy-600"}`}
                     >
                       {item.label}
                       <Icon name="chevronDown" className={`h-4 w-4 transition ${open === i ? "rotate-180" : ""}`} />
-                      {active ? <span className="absolute inset-x-1.5 -bottom-[1px] h-0.5 rounded bg-gold-400" /> : null}
+                      {active ? <span className="absolute inset-x-1 -bottom-[1px] min-[1400px]:inset-x-1.5 h-0.5 rounded bg-gold-400" /> : null}
                     </button>
                     <div
                       id={`menu-${i}`}
                       hidden={open !== i}
                       className={`absolute top-full z-50 pt-3 ${i >= mainNav.length - 3 ? "right-0" : "left-1/2 -translate-x-1/2"} ${wide ? "w-[640px]" : "w-80"}`}
                     >
-                      <div className="overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-lift">
+                      <div className="anim-menu overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-lift">
                         <ul className={`grid gap-1 p-3 ${wide ? "grid-cols-2" : ""}`}>
                           {item.children.map((c) => (
-                            <li key={c.href}>
+                            <li key={c.label}>
                               <Link href={c.href} className="block rounded-xl px-3 py-2.5 transition hover:bg-navy-50">
                                 <span className="block text-sm font-semibold text-navy-900">{c.label}</span>
                                 {c.description ? <span className="mt-0.5 block text-[0.8125rem] leading-snug text-navy-500">{c.description}</span> : null}
@@ -204,7 +204,7 @@ export function Header() {
                     </summary>
                     <ul className="mb-3 space-y-0.5 border-l-2 border-gold-300 pl-4">
                       {item.children.map((c) => (
-                        <li key={c.href}>
+                        <li key={c.label}>
                           <Link href={c.href} className="block py-2 text-[0.9375rem] text-navy-700 hover:text-navy-950">
                             {c.label}
                           </Link>

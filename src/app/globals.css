@@ -69,6 +69,21 @@
     animation: fin-bar 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
     transform-box: fill-box;
   }
+  /* Header dropdowns: replays each time the panel is un-hidden */
+  .anim-menu {
+    animation: fin-menu 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+}
+
+@keyframes fin-menu {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes fin-rise {
@@ -181,7 +196,8 @@
   .anim-fade-up,
   .anim-pop,
   .anim-kenburns,
-  .anim-bar {
+  .anim-bar,
+  .anim-menu {
     animation: none !important;
   }
 }

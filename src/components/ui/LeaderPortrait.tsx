@@ -10,7 +10,7 @@ export function LeaderPortrait({ className = "", priority = false }: { className
   return (
     <div className={`relative overflow-hidden rounded-3xl bg-navy-800 ${className}`}>
       {photo ? (
-        <Image src={photo} alt={`${name}, ${site.leadership.title}`} fill priority={priority} sizes="(min-width: 1024px) 400px, 100vw" className="object-cover" />
+        <Image src={photo} alt={`${name}, ${site.leadership.title}`} fill priority={priority} sizes="(min-width: 1024px) 400px, 100vw" className="object-cover object-[center_40%]" />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-navy-700 to-navy-950 p-6 text-center">
           <svg viewBox="0 0 120 120" className="h-28 w-28 text-gold-300" aria-hidden>

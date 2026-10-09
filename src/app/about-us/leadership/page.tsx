@@ -1,8 +1,7 @@
+import { LeadershipProfile } from "@/components/leadership/LeadershipProfile";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CtaBand } from "@/components/ui/CtaBand";
-import { LeaderPortrait } from "@/components/ui/LeaderPortrait";
 import { PageHero } from "@/components/ui/PageHero";
-import { Pending } from "@/components/ui/Pending";
 import { Section } from "@/components/ui/Section";
 import { absoluteUrl, site } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
@@ -13,19 +12,6 @@ export const metadata = buildMetadata({
   path: "/about-us/leadership",
 });
 
-/**
- * Plan §10 recommended biography structure. Each section stays a placeholder until the client
- * approves the exact wording — do not publish Air Force, engineering, MBA, consulting or
- * years-of-experience claims before that approval.
- */
-const bioSections = [
-  "Professional background",
-  "Technical / engineering experience",
-  "Leadership and management experience",
-  "Insurance industry experience",
-  "Areas of insurance expertise",
-];
-
 export default function LeadershipPage() {
   const { name, title } = site.leadership;
   return (
@@ -35,40 +21,23 @@ export default function LeadershipPage() {
           { name: "About Us", path: "/about-us" },
           { name: "Leadership", path: "/about-us/leadership" },
         ]}
-        eyebrow="Leadership"
-        title={name}
-        intro={<p className="text-gold-200">{title}</p>}
+        eyebrow="About Finmirai"
+        title="Leadership"
+        intro={
+          <p>
+            Meet the {title} of {site.legalName}.
+          </p>
+        }
       />
 
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <div className="lg:sticky lg:top-32">
-              <LeaderPortrait className="aspect-[4/5] w-full max-w-sm" priority />
-              <p className="mt-5 font-display text-xl font-bold text-navy-900">{name}</p>
-              <p className="text-gold-700">{title}</p>
-              <p className="mt-1 text-sm text-navy-500">{site.legalName}</p>
-            </div>
-          </div>
-          <article className="prose-fin lg:col-span-8">
-            {site.leadership.approvedBio ? (
-              <p>{site.leadership.approvedBio}</p>
-            ) : (
-              <>
-                <p>
-                  {name} is the {title} of {site.legalName}.
-                </p>
-                {bioSections.map((s) => (
-                  <section key={s}>
-                    <h2>{s}</h2>
-                    <p>
-                      <Pending label={`${s} — approved wording`} />
-                    </p>
-                  </section>
-                ))}
-              </>
-            )}
-            <h2>Approach to customer service and risk advisory</h2>
+      <LeadershipProfile priority />
+
+      <Section tone="mist" labelledBy="approach-heading">
+        <div className="grid gap-10 md:grid-cols-12 md:gap-10 lg:gap-16">
+          <article className="prose-fin md:col-span-7 md:col-start-6 lg:col-span-8 lg:col-start-5">
+            <h2 id="approach-heading" className="!mt-0">
+              Approach to customer service and risk advisory
+            </h2>
             <p>
               Finmirai is built on the belief that insurance is not just about buying a policy. It is about understanding risk, choosing
               appropriate protection and having support when it matters — at renewal, when circumstances change, and when a claim arises.

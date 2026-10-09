@@ -1,5 +1,6 @@
 import type { IconName } from "@/components/ui/Icon";
 import { images, type SiteImage } from "./images";
+import { corporateRequirementOptions, insuranceTypeOptions } from "./productOptions";
 
 /**
  * Insurance product pages (Plan §6). Every page renders through ProductPageTemplate using this shape.
@@ -686,17 +687,18 @@ export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }
 
-/** Options for the "type of insurance" select in enquiry forms. */
-export const insuranceTypeOptions = [
-  ...personalProducts.map((p) => ({ value: p.slug, label: p.name })),
-  { value: "corporate", label: "Business / Corporate Insurance" },
-  { value: "review", label: "Review of my existing policies" },
-  { value: "other", label: "Something else / not sure" },
-];
-
-/** Requirement checkboxes on the corporate form (Plan §7 risk areas). */
-export const corporateRequirementOptions = [
-  ...corporateProducts.map((p) => ({ value: p.slug, label: p.shortName })),
-  { value: "surety-bonds", label: "Surety Bonds" },
-  { value: "programme-review", label: "Review of existing programme" },
-];
+// Form options live in productOptions.ts so client forms don't bundle this file. Fail the build if they drift.
+const optionsInSync = (opts: { value: string; label: string }[], expected: { value: string; label: string }[]) =>
+  expected.every((e, i) => opts[i]?.value === e.value && opts[i]?.label === e.label);
+if (
+  !optionsInSync(
+    insuranceTypeOptions,
+    personalProducts.map((p) => ({ value: p.slug, label: p.name })),
+  ) ||
+  !optionsInSync(
+    corporateRequirementOptions,
+    corporateProducts.map((p) => ({ value: p.slug, label: p.shortName })),
+  )
+) {
+  throw new Error("content/productOptions.ts is out of sync with the products list in content/products.ts");
+}

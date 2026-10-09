@@ -1,6 +1,6 @@
 "use client";
 
-import { corporateRequirementOptions, insuranceTypeOptions } from "@/content/products";
+import { corporateRequirementOptions, insuranceTypeOptions } from "@/content/productOptions";
 import {
   advisorInterestOptions,
   advisorLeadSchema,

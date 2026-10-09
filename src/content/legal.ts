@@ -88,8 +88,10 @@ export const legalDocs: LegalDoc[] = [
     body: [
       { type: "h2", text: "Company and registration details" },
       { type: "p", text: `Name: ${site.legalName}` },
-      { type: "pending", label: "Broker registration number, category and validity" },
-      { type: "pending", label: "CIN and registered office address" },
+      { type: "p", text: `Broker registration number: ${site.regulatory.brokerRegistrationNumber}` },
+      { type: "pending", label: "Registration category and validity" },
+      { type: "p", text: `CIN: ${site.regulatory.cin}` },
+      { type: "pending", label: "Registered office address" },
       { type: "p", text: `Principal Officer: ${site.leadership.name}` },
       { type: "h2", text: "Nature of our role" },
       { type: "p", text: "Finmirai acts as an insurance broker. Insurance policies are issued and underwritten by insurance companies. Claim admissibility and settlement are decided by the insurer in accordance with the policy terms and conditions." },

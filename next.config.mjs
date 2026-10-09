@@ -12,6 +12,9 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // Default is 60s: browsers re-check every photo a minute later and the server re-encodes them.
+    // Photos in /public/images rarely change — when replacing one, give the new file a new name.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

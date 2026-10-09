@@ -9,8 +9,9 @@ to find them all.
 
 | Item | Where it shows | Status |
 |---|---|---|
-| Broker registration number, category, validity | Footer, every product disclaimer, About, Disclosures | **Required** |
-| CIN | Footer, About | **Required** |
+| Broker registration number (`1173`) | Footer, every product disclaimer, About, Disclosures | Done |
+| Registration category, validity | Every product disclaimer, About, Disclosures | **Required** |
+| CIN (`U66220TN2025PTC179669`) | Footer, About, Disclosures | Done |
 | Grievance officer name / email / phone | Grievance page, Privacy Policy | **Required** |
 | Office hours | Contact page | Required |
 | Phone `+91 98411 87087` — confirm it is the official public number | Everywhere | Verify |
@@ -22,9 +23,8 @@ to find them all.
 
 ## 2. Leadership — `site.leadership`
 
-- [ ] Professional photograph of Flt. Lt. Sujatha G (set `photo: "/images/<file>.jpg"`)
-- [ ] Approved short profile (`approvedBio`) — homepage & leadership page
-- [ ] Approved wording for each biography section on `/about-us/leadership`
+- [x] Professional photograph of Flt. Lt. Sujatha G (`/images/leadership-sujatha-g.jpg`)
+- [x] Biography, background and expertise (`site.leadership.bio` / `background` / `expertise`)
   (professional background, technical/engineering, leadership, insurance experience, areas of expertise).
   **Do not publish Air Force, engineering, MBA, consulting or years-of-experience claims until approved.**
 

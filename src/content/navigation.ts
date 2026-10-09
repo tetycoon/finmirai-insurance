@@ -13,7 +13,7 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
-    label: "Corporate",
+    label: "Corporate Solutions",
     href: "/corporate-insurance",
     children: [
       ...corporateProducts.map((p) => ({ label: p.name, href: productHref(p), description: p.cardSummary })),

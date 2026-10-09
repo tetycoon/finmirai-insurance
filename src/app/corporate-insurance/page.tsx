@@ -39,6 +39,19 @@ const corporateProcess = [
   { title: "Year-round service", text: "Endorsements, claims support and renewal reviews." },
 ];
 
+const corporateCovers = [
+  "Property Insurance",
+  "Fire & Special Perils",
+  "Industrial / Factory Insurance",
+  "Marine Insurance",
+  "Liability Insurance",
+  "Workmen Compensation",
+  "Group Personal Accident",
+  "Group Mediclaim",
+  "Group Term Life",
+  "Employee Benefits",
+];
+
 const otherAreas = ["Surety bonds", "Workmen / employees' compensation", "Business interruption", "Contract-required covers and certificates"];
 
 export default function CorporateInsurancePage() {
@@ -94,6 +107,16 @@ export default function CorporateInsurancePage() {
                     <Icon name="arrowRight" className="h-4 w-4 shrink-0 text-navy-400 transition group-hover:translate-x-0.5 group-hover:text-navy-900" />
                   </span>
                 </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mt-10 rounded-2xl border border-navy-100 bg-mist p-6 sm:p-8">
+          <h3 className="text-xl font-bold">Corporate Insurance</h3>
+          <ul className="mt-4 grid gap-x-6 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-3">
+            {corporateCovers.map((c) => (
+              <li key={c} className="flex items-center gap-2 text-navy-700">
+                <Icon name="check" className="h-4 w-4 shrink-0 text-gold-600" /> {c}
               </li>
             ))}
           </ul>

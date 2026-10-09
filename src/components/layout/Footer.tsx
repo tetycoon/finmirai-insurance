@@ -65,7 +65,8 @@ export function Footer() {
         <div className="container space-y-3 py-6 text-[0.8125rem] leading-relaxed text-navy-400">
           <p>
             <span className="text-navy-200">{site.legalName}</span> · Broker Registration No.{" "}
-            {reg.brokerRegistrationNumber ?? <Pending label="Registration no." />} · CIN {reg.cin ?? <Pending label="CIN" />}
+            <strong className="font-semibold text-gold-300">{reg.brokerRegistrationNumber ?? <Pending label="Registration no." />}</strong> · CIN{" "}
+            <strong className="font-semibold text-gold-300">{reg.cin ?? <Pending label="CIN" />}</strong>
           </p>
           <p>
             Insurance is the subject matter of solicitation. Claim settlement is subject to the insurer's assessment and policy terms and

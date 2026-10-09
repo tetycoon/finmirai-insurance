@@ -40,17 +40,36 @@ export const site = {
   leadership: {
     name: "Flt. Lt. Sujatha G",
     title: "Managing Director & Principal Officer",
-    // Plan §10: publish detailed biography only after client approval.
-    approvedBio: null as string | null,
-    photo: null as string | null,
+    // Plan §10: biography wording supplied/approved by the client. bio[0] doubles as the short homepage profile.
+    bio: [
+      "Flt. Lt. Sujatha G is a former Indian Air Force officer with a background in Aeronautical Engineering - Electronics and experience as a Radar Control Engineer.",
+      "Her professional journey includes service in the Indian Air Force, an MBA and management consulting experience before developing a long-standing career in insurance.",
+      "With extensive experience in the insurance industry, her areas of expertise include retail insurance policy sourcing, initial underwriting, policy servicing, claims support and insurance industry developments.",
+      "At Finmirai, she brings together professional discipline, technical understanding, management experience and insurance expertise with the objective of building a customer-centric and future-ready insurance broking organisation.",
+    ],
+    background: [
+      "Former Indian Air Force officer",
+      "Radar Control Engineer",
+      "Aeronautical Engineering - Electronics",
+      "MBA and management consulting",
+    ],
+    expertise: [
+      "Retail insurance policy sourcing",
+      "Initial underwriting",
+      "Policy servicing",
+      "Claims support",
+      "Insurance industry developments",
+    ],
+    // Supplied by the client (not Unsplash) — not listed on /legal/image-credits.
+    photo: "/images/leadership-sujatha-g.jpg" as string | null,
   },
 
   regulatory: {
     // Plan §2 & §15: all statutory details must come from the client / compliance professional.
-    brokerRegistrationNumber: null as string | null,
+    brokerRegistrationNumber: "1173" as string | null,
     registrationCategory: null as string | null,
     registrationValidity: null as string | null,
-    cin: null as string | null,
+    cin: "U66220TN2025PTC179669" as string | null,
     grievanceOfficer: null as string | null,
     grievanceEmail: null as string | null,
   },
