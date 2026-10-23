@@ -90,6 +90,8 @@ The API:
 1. implement `LeadRepository` against PostgreSQL (Plan §14) in `src/lib/server/leadStore.ts`, and/or
 2. set `LEAD_WEBHOOK_URL` to forward every lead (JSON, HMAC-signed with `LEAD_WEBHOOK_SECRET`) to a CRM, Google Sheet, Zapier/Make, or an email relay.
 
+**Email routing.** The site does not send email itself. Every lead carries a `notifyEmail` field: `advisors@finmiraiindia.com` for advisor applications, `support@finmiraiindia.com` for everything else (both set in `site.contact`). An email relay behind `LEAD_WEBHOOK_URL` should use `notifyEmail` as the recipient so advisor applications reach the advisor inbox.
+
 **Not yet built:** the staff admin panel from Plan §12 (login, assignment, statuses, notes, CSV export, dashboard). The lead record already includes `status`, `assignedTo`, `priority` and `category` fields so the admin can be added without changing the forms.
 
 **Document uploads** are deliberately not collected (Plan §12: no sensitive documents via insecure forms). The claims form tells users we will share a secure method.

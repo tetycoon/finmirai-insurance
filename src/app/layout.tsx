@@ -32,6 +32,16 @@ export const viewport: Viewport = {
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
+const headScript = `(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var s = sessionStorage;
+    if (location.pathname === '/' && !s.getItem('fin-intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro');
+    s.setItem('fin-intro', '1');
+  } catch (e) {}
+})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // suppressHydrationWarning: browser extensions (e.g. ColorZilla's `cz-shortcut-listen`, Grammarly) add
@@ -39,8 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // elements — mismatches anywhere inside the page are still reported.
     <html lang="en-IN" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
       <head>
-        {/* Enables scroll-reveal hidden states only when JS runs (no-JS visitors see everything). */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Enables scroll-reveal hidden states only when JS runs (no-JS visitors see everything), and decides
+            before first paint whether the homepage intro plays: landing on "/" in a fresh session only. */}
+        <script dangerouslySetInnerHTML={{ __html: headScript }} />
       </head>
       <body suppressHydrationWarning>
         <Header />

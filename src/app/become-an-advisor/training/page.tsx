@@ -2,7 +2,6 @@ import { ButtonLink } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { PageHero } from "@/components/ui/PageHero";
-import { Pending } from "@/components/ui/Pending";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { images } from "@/content/images";
 import { buildMetadata } from "@/lib/seo";
@@ -63,9 +62,6 @@ export default function TrainingPage() {
             </div>
           ))}
         </div>
-        <p className="mt-8 text-sm text-navy-600">
-          Training format, schedule and any mandatory certification steps: <Pending label="Training format & schedule" />
-        </p>
       </Section>
 
       <Section tone="mist" labelledBy="support-heading">

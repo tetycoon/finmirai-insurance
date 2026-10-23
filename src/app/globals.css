@@ -256,3 +256,142 @@
     @apply border-red-500 focus:ring-red-200;
   }
 }
+
+/* ───────────── Homepage intro (components/home/HomeIntro.tsx) ─────────────
+   Shown only while <html> has .intro (set in the layout <head> script) and during the .intro-exit fade.
+   ~2.75s: mark settles → spins 360° → slides left → wordmark rises → slogan fades in → fade out. */
+#fin-intro {
+  display: none;
+}
+.intro #fin-intro,
+.intro-exit #fin-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  /* Matches the logo file's own off-white background, so the mark has no visible box. */
+  background: #fefefe;
+  cursor: pointer;
+}
+/* Failsafe: if the intro script never runs its timer, the overlay still fades away on its own. */
+.intro #fin-intro {
+  animation: fin-intro-out 0.45s 3.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.intro-exit #fin-intro {
+  animation: fin-intro-out 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+/* Hold the hero's own entrance until the intro starts leaving, so it plays in view. */
+.intro .anim-rise,
+.intro .anim-fade-up,
+.intro .anim-pop,
+.intro .anim-kenburns,
+.intro .anim-bar {
+  animation-play-state: paused;
+}
+
+.intro-lockup {
+  display: flex;
+  align-items: center;
+}
+/* Starts centred on screen (offset by half the text width, measured by the intro script), then slides into place. */
+.intro-mark {
+  flex: none;
+  animation: fin-intro-slide 0.45s 1.2s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.intro-mark img {
+  height: clamp(64px, 17vw, 116px);
+  width: auto;
+  animation: fin-intro-spin 1.3s both;
+}
+.intro-text {
+  margin-left: clamp(0.85rem, 3vw, 1.5rem);
+}
+.intro-mask {
+  display: block;
+  overflow: hidden;
+}
+.intro-line {
+  display: block;
+  animation: fin-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.intro-line-1 {
+  font-size: clamp(2rem, 9vw, 3.75rem);
+  line-height: 1.08;
+  padding-bottom: 0.04em;
+  animation-delay: 1.6s;
+}
+.intro-line-2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: 0.15rem;
+  font-size: clamp(0.56rem, 2.1vw, 0.8rem);
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+  animation-delay: 1.75s;
+}
+/* Gold rules either side, as on the brand sheet — only where there's room for them. */
+@media (min-width: 640px) {
+  .intro-line-2::before,
+  .intro-line-2::after {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    border-radius: 1px;
+    background: #d4a93f;
+  }
+}
+.intro-slogan {
+  margin-top: 0.7rem;
+  font-size: clamp(0.8rem, 2.6vw, 1.05rem);
+  line-height: 1.35;
+  animation: fin-intro-slogan 0.55s 2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.intro-slogan span {
+  display: inline-block;
+}
+
+@keyframes fin-intro-spin {
+  0% {
+    opacity: 0;
+    transform: perspective(700px) scale(1.35) rotateY(0deg);
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  30% {
+    opacity: 1;
+    transform: perspective(700px) scale(1) rotateY(0deg);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.25, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(700px) scale(1) rotateY(360deg);
+  }
+}
+@keyframes fin-intro-slide {
+  from {
+    transform: translateX(var(--intro-shift, 0px));
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes fin-intro-slogan {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fin-intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

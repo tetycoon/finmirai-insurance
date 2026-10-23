@@ -20,6 +20,7 @@ export function Logo({ light = false, className = "" }: { light?: boolean; class
 
 /** The logo image has a white background, so on dark surfaces it sits on a white tile. */
 export function LogoMark({ light = false }: { light?: boolean }) {
-  const img = <Image src="/logo.png" alt="" width={213} height={222} priority className="h-12 w-auto lg:h-14" />;
+  // width/height = the largest rendered size (h-14), so the srcset serves ~64/128px files, not 256/640px.
+  const img = <Image src="/logo.png" alt="" width={54} height={56} priority className="h-12 w-auto lg:h-14" />;
   return light ? <span className="inline-flex shrink-0 rounded-lg bg-white p-1">{img}</span> : <span className="inline-flex shrink-0">{img}</span>;
 }

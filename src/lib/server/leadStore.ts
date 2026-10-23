@@ -2,6 +2,7 @@ import "server-only";
 import { createHmac, randomBytes } from "node:crypto";
 import { appendFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+import { site } from "@/content/site";
 import { CONSENT_VERSION, type LeadType } from "@/lib/schemas";
 
 /**
@@ -21,6 +22,8 @@ export type LeadRecord = {
   /** Plan §12 lead types: corporate is higher priority; claims are service requests, not sales leads. */
   category: "sales" | "service" | "recruitment" | "callback";
   priority: "normal" | "high";
+  /** Inbox that should receive this lead. Email relays behind LEAD_WEBHOOK_URL should send to this address. */
+  notifyEmail: string;
   status: LeadStatus;
   assignedTo: string | null;
   data: Record<string, unknown>;
@@ -74,6 +77,7 @@ export function buildLead(input: {
     type: input.type,
     category: CATEGORY[input.type],
     priority: input.type === "corporate" || input.type === "claim" ? "high" : "normal",
+    notifyEmail: input.type === "advisor" ? site.contact.advisorEmail : site.contact.email,
     status: "new",
     assignedTo: null,
     data,

@@ -6,7 +6,6 @@ import { ArticleCard } from "@/components/ui/ArticleCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
-import { Pending } from "@/components/ui/Pending";
 import { Section } from "@/components/ui/Section";
 import { articles, getArticle, type Block } from "@/content/articles";
 import { buildMetadata } from "@/lib/seo";
@@ -60,8 +59,6 @@ function renderBlock(b: Block, i: number) {
   }
 }
 
-const dateFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long", year: "numeric" });
-
 export default async function ArticlePage({ params }: Props) {
   const article = getArticle((await params).slug);
   if (!article) notFound();
@@ -78,26 +75,6 @@ export default async function ArticlePage({ params }: Props) {
               <p className="eyebrow">{article.category}</p>
               <h1 className="mt-3 text-3xl font-extrabold leading-tight sm:text-5xl">{article.title}</h1>
               <p className="mt-4 text-lg text-navy-600">{article.excerpt}</p>
-              <dl className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-navy-600">
-                <div>
-                  <dt className="sr-only">Author</dt>
-                  <dd>By {article.author}</dd>
-                </div>
-                <div>
-                  <dt className="inline">Reviewed by: </dt>
-                  <dd className="inline">{article.reviewedBy ?? <Pending label="Reviewer" />}</dd>
-                </div>
-                <div>
-                  <dt className="sr-only">Published</dt>
-                  <dd>
-                    <time dateTime={article.published}>{dateFmt.format(new Date(article.published))}</time>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="sr-only">Reading time</dt>
-                  <dd>{article.readingMinutes} min read</dd>
-                </div>
-              </dl>
             </div>
           </div>
         </header>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CallbackForm } from "@/components/forms/Forms";
 import { HomeHero } from "@/components/home/HomeHero";
+import { HomeIntro } from "@/components/home/HomeIntro";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { ButtonLink, buttonClasses } from "@/components/ui/Button";
 import { Icon, type IconName } from "@/components/ui/Icon";
@@ -49,6 +50,9 @@ const advisorPillars: { title: string; icon: IconName }[] = [
 export default function HomePage() {
   return (
     <>
+      {/* 0 — Brand intro overlay: first visit of a session only */}
+      <HomeIntro />
+
       {/* 1 — Hero (animated) */}
       <HomeHero />
 

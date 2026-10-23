@@ -17,14 +17,16 @@ export const site = {
   locale: "en_IN",
 
   contact: {
-    // From business card — verify before launch (Plan §2).
-    phoneDisplay: "+91 98411 87087",
-    phoneE164: "+919841187087",
-    // ASSUMPTION: the card phone also receives WhatsApp. Confirm with client before launch.
+    // Official support line supplied by the client (Oct 2026).
+    phoneDisplay: "+91 89395 95270",
+    phoneE164: "+918939595270",
+    // ASSUMPTION: WhatsApp still points at the business-card number (+91 98411 87087). Confirm with the
+    // client whether it should move to the support line above.
     whatsappNumber: "919841187087",
     whatsappDefaultMessage: "Hello Finmirai, I would like some help with insurance.",
-    // From business card. Client should confirm whether an official domain email will replace this.
-    email: "sujathiaf@gmail.com",
+    // Official domain addresses supplied by the client (Oct 2026).
+    email: "support@finmiraiindia.com",
+    advisorEmail: "advisors@finmiraiindia.com",
     address: {
       line1: "B4, Ceebros Rangam Apartments",
       line2: "11, Cenotaph Road, Teynampet",
@@ -95,8 +97,12 @@ export function whatsappHref(message: string = site.contact.whatsappDefaultMessa
   return `https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
-export function mailHref(subject?: string): string {
-  return `mailto:${site.contact.email}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`;
+export function mailHref(subject?: string, to: string = site.contact.email): string {
+  return `mailto:${to}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`;
+}
+
+export function advisorMailHref(subject = "Advisor programme enquiry"): string {
+  return mailHref(subject, site.contact.advisorEmail);
 }
 
 export function mapsHref(): string {

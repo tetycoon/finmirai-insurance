@@ -22,8 +22,7 @@ export function ArticleCard({ article }: { article: Article }) {
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-bold leading-snug text-navy-900 group-hover:text-navy-700">{article.title}</h3>
         <p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-navy-600">{article.excerpt}</p>
-        <span className="mt-5 flex items-center justify-between text-sm">
-          <span className="text-navy-500">{article.readingMinutes} min read</span>
+        <span className="mt-5 flex items-center justify-end text-sm">
           <span className="inline-flex items-center gap-1 font-semibold text-navy-800">
             Read guide <Icon name="arrowRight" className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </span>

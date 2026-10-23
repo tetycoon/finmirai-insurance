@@ -3,9 +3,10 @@ import { ButtonLink } from "@/components/ui/Button";
 import { FaqList } from "@/components/ui/FaqList";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { PageHero } from "@/components/ui/PageHero";
-import { Pending } from "@/components/ui/Pending";
 import { Section, SectionHeading } from "@/components/ui/Section";
+import { TrackedLink } from "@/components/ui/TrackedLink";
 import { images } from "@/content/images";
+import { advisorMailHref, site } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -103,8 +104,7 @@ export default function BecomeAdvisorPage() {
           ))}
         </ol>
         <p className="mt-6 text-sm text-navy-600">
-          Eligibility, verification, training and certification follow the applicable regulatory requirements.{" "}
-          <Pending label="Detailed eligibility criteria" />
+          Eligibility, verification, training and certification follow the applicable regulatory requirements.
         </p>
       </Section>
 
@@ -137,6 +137,17 @@ export default function BecomeAdvisorPage() {
               title="Start your application"
               intro="Tell us about yourself. Our team will contact you to explain the process and next steps."
             />
+            <div className="mt-8 rounded-2xl border border-navy-100 bg-white p-5">
+              <p className="text-sm font-semibold text-navy-900">Prefer email?</p>
+              <TrackedLink
+                kind="email"
+                location="advisor_apply"
+                href={advisorMailHref()}
+                className="mt-2 inline-flex items-center gap-2 break-all font-semibold text-navy-800 underline decoration-gold-400 underline-offset-2 hover:text-navy-950"
+              >
+                <Icon name="mail" className="h-4 w-4 shrink-0 text-gold-600" /> {site.contact.advisorEmail}
+              </TrackedLink>
+            </div>
           </div>
           <div className="rounded-2xl border border-navy-100 bg-white p-6 shadow-card sm:p-8 lg:col-span-8">
             <AdvisorApplicationForm />

@@ -79,8 +79,11 @@ export function Header() {
       {/* Utility bar — desktop only */}
       <div className="hidden bg-navy-950 text-[0.8125rem] text-navy-200 lg:block">
         <div className="container flex h-9 items-center justify-between">
-          <p>{site.positioning} for Individuals, Families, Businesses &amp; Corporates</p>
-          <div className="flex items-center gap-5">
+          <p className="truncate">
+            {site.positioning}
+            <span className="hidden xl:inline"> for Individuals, Families, Businesses &amp; Corporates</span>
+          </p>
+          <div className="flex shrink-0 items-center gap-5">
             <TrackedLink kind="call" location="utility_bar" href={telHref()} className="inline-flex items-center gap-1.5 hover:text-white">
               <Icon name="phone" className="h-3.5 w-3.5" /> {site.contact.phoneDisplay}
             </TrackedLink>
@@ -99,7 +102,7 @@ export function Header() {
           <Logo />
 
           <nav aria-label="Main" className="hidden xl:block">
-            <ul className="flex items-center">
+            <ul className="flex items-center gap-1 min-[1400px]:gap-0.5">
               {mainNav.map((item, i) => {
                 const active = isActive(pathname, item);
                 if (!item.children) {
@@ -240,6 +243,14 @@ export function Header() {
               </TrackedLink>
               <TrackedLink kind="whatsapp" location="mobile_menu" href={whatsappHref()} className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-navy-200 font-semibold text-navy-900">
                 <Icon name="whatsapp" className="h-5 w-5" /> WhatsApp
+              </TrackedLink>
+            </div>
+            <div className="mt-1 space-y-2 text-[0.9375rem] text-navy-700">
+              <TrackedLink kind="call" location="mobile_menu_details" href={telHref()} className="flex items-center gap-2.5 hover:text-navy-950">
+                <Icon name="phone" className="h-4 w-4 shrink-0 text-gold-600" /> {site.contact.phoneDisplay}
+              </TrackedLink>
+              <TrackedLink kind="email" location="mobile_menu_details" href={mailHref()} className="flex items-center gap-2.5 break-all hover:text-navy-950">
+                <Icon name="mail" className="h-4 w-4 shrink-0 text-gold-600" /> {site.contact.email}
               </TrackedLink>
             </div>
           </div>

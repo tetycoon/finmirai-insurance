@@ -14,9 +14,11 @@ to find them all.
 | CIN (`U66220TN2025PTC179669`) | Footer, About, Disclosures | Done |
 | Grievance officer name / email / phone | Grievance page, Privacy Policy | **Required** |
 | Office hours | Contact page | Required |
-| Phone `+91 98411 87087` — confirm it is the official public number | Everywhere | Verify |
-| WhatsApp — currently **assumed** to be the same number (`919841187087`) | All WhatsApp buttons | **Confirm** |
-| Email `sujathiaf@gmail.com` — confirm, or replace with an official domain address | Header, footer, contact | Verify |
+| Phone `+91 89395 95270` (support line supplied by the client) | Everywhere | Done |
+| WhatsApp — still the business-card number (`919841187087`); confirm whether it should move to the support line | All WhatsApp buttons | **Confirm** |
+| Email `support@finmiraiindia.com` | Header, footer, contact, legal pages, schema | Done |
+| Advisor email `advisors@finmiraiindia.com` | Become an Advisor page; `notifyEmail` on advisor leads | Done |
+| Email relay on `LEAD_WEBHOOK_URL` that sends each lead to its `notifyEmail` (see README → Leads) | Form notifications | **Required** |
 | Office address (Teynampet, Chennai 600018) | Footer, contact, schema | Verify |
 
 > Note: `8122233887` (Ayaan Enterprises) is the **project coordination** contact from the brief and is intentionally *not* used on the public site.
