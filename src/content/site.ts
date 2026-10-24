@@ -63,7 +63,7 @@ export const site = {
       "Insurance industry developments",
     ],
     // Supplied by the client (not Unsplash) — not listed on /legal/image-credits.
-    photo: "/images/leadership-sujatha-g.jpg" as string | null,
+    photo: "/images/leadership-sujatha-g-v2.jpg" as string | null,
   },
 
   regulatory: {

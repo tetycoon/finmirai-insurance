@@ -25,7 +25,7 @@ to find them all.
 
 ## 2. Leadership — `site.leadership`
 
-- [x] Professional photograph of Flt. Lt. Sujatha G (`/images/leadership-sujatha-g.jpg`)
+- [x] Professional photograph of Flt. Lt. Sujatha G (`/images/leadership-sujatha-g-v2.jpg`)
 - [x] Biography, background and expertise (`site.leadership.bio` / `background` / `expertise`)
   (professional background, technical/engineering, leadership, insurance experience, areas of expertise).
   **Do not publish Air Force, engineering, MBA, consulting or years-of-experience claims until approved.**
