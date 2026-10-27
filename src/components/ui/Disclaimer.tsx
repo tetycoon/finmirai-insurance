@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { site } from "@/content/site";
 import { Pending } from "./Pending";
 
@@ -18,12 +17,7 @@ export function Disclaimer({ specific }: { specific?: string }) {
       </p>
       <p className="mt-2">
         Broker registration no.:{" "}
-        {reg.brokerRegistrationNumber ?? <Pending label="Registration no." />} · Category:{" "}
-        {reg.registrationCategory ?? <Pending label="Category" />} · Valid till:{" "}
-        {reg.registrationValidity ?? <Pending label="Validity" />}.{" "}
-        <Link href="/legal/disclosures" className="font-medium text-navy-800 underline decoration-gold-400 underline-offset-2">
-          Full disclosures
-        </Link>
+        {reg.brokerRegistrationNumber ?? <Pending label="Registration no." />}
       </p>
     </aside>
   );

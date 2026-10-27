@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Icon } from "@/components/ui/Icon";
 import { PageHero } from "@/components/ui/PageHero";
 import { Pending } from "@/components/ui/Pending";
 import { getLegalDoc, legalDocs, type LegalBlock } from "@/content/legal";
@@ -70,10 +69,6 @@ export default async function LegalDocPage({ params }: Props) {
       />
       <div className="container grid gap-12 py-12 sm:py-16 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          <p className="mb-8 flex items-start gap-2 rounded-lg border border-dashed border-gold-500 bg-gold-50 p-4 text-sm text-gold-700">
-            <Icon name="alert" className="mt-0.5 h-4 w-4 shrink-0" />
-            Draft for review — final wording must be approved by Finmirai&apos;s compliance professional before publication.
-          </p>
           <div className="prose-fin">{doc.body.map(render)}</div>
         </div>
         <nav aria-label="Legal pages" className="lg:col-span-4">

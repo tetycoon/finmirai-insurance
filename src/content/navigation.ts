@@ -78,5 +78,4 @@ export const legalNav: NavLink[] = [
   { label: "Terms of Use", href: "/legal/terms-of-use" },
   { label: "Disclosures", href: "/legal/disclosures" },
   { label: "Grievance Redressal", href: "/legal/grievance-redressal" },
-  { label: "Image Credits", href: "/legal/image-credits" },
 ];

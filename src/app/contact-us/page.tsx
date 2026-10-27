@@ -51,7 +51,7 @@ export default function ContactPage() {
           <div className="rounded-2xl border border-navy-100 p-6">
             <Icon name="clock" className="h-6 w-6 text-gold-600" />
             <h2 className="mt-4 text-base font-semibold">Office hours</h2>
-            <p className="mt-1 text-navy-900">{site.contact.officeHours ?? <Pending label="Office hours" />}</p>
+            <p className="mt-1 text-lg font-bold text-navy-900">{site.contact.officeHours ?? <Pending label="Office hours" />}</p>
           </div>
         </div>
       </Section>

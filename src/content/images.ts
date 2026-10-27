@@ -1,6 +1,6 @@
 /**
  * Photography registry. All files live in /public/images and are free-licence Unsplash photos
- * (credits in /public/images/CREDITS.json and on /legal/image-credits).
+ * (credits in /public/images/CREDITS.json).
  * Plan §11 prefers real Finmirai photography — swap files here when the client supplies them.
  */
 export type SiteImage = { src: string; alt: string };
@@ -15,7 +15,7 @@ export const images = {
     "tamil-family-traditional",
     "Smiling Tamil family in traditional veshti and silk saree, the father holding their young son",
   ),
-  // Supplied by the client (not Unsplash) — not listed on /legal/image-credits.
+  // Supplied by the client (not Unsplash).
   travelPassportAirport: img("travel-passport-airport", "Smiling traveller at an airport holding his passport and travel insurance policy"),
   accidentArmCast: img("accident-arm-cast", "Man in a hospital gown with his arm in a cast, supported by a helping arm"),
   healthDoctorNursePatient: img("health-doctor-nurse-patient", "Doctor and nurse smiling as they talk with a patient in a bright hospital corridor"),
