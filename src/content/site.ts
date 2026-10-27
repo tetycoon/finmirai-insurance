@@ -36,7 +36,8 @@ export const site = {
       country: "IN",
     },
     mapsQuery: "Ceebros Rangam Apartments, 11 Cenotaph Road, Teynampet, Chennai 600018",
-    officeHours: null as string | null,
+    // Supplied by the client (Oct 2026). Working days not yet confirmed.
+    officeHours: "9:00 am – 6:00 pm" as string | null,
   },
 
   leadership: {

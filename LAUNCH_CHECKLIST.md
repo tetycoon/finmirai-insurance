@@ -13,7 +13,7 @@ to find them all.
 | Registration category, validity | Every product disclaimer, About, Disclosures | **Required** |
 | CIN (`U66220TN2025PTC179669`) | Footer, About, Disclosures | Done |
 | Grievance officer name / email / phone | Grievance page, Privacy Policy | **Required** |
-| Office hours | Contact page | Required |
+| Office hours | Contact page | Done (9:00 am – 6:00 pm; working days to be confirmed) |
 | Phone `+91 89395 95270` (support line supplied by the client) | Everywhere | Done |
 | WhatsApp — still the business-card number (`919841187087`); confirm whether it should move to the support line | All WhatsApp buttons | **Confirm** |
 | Email `support@finmiraiindia.com` | Header, footer, contact, legal pages, schema | Done |
