@@ -4,6 +4,8 @@ import { legalDocs } from "@/content/legal";
 import { productHref, products } from "@/content/products";
 import { absoluteUrl } from "@/content/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths: [string, number][] = [
     ["/", 1],

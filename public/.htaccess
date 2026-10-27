@@ -1,0 +1,72 @@
+# ==============================================================================
+# Finmirai Insurance Brokers - Production Apache / LiteSpeed Configuration
+# Domain: finmiraiindia.com
+# ==============================================================================
+
+DirectoryIndex index.html index.php
+
+# 1. Force HTTPS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # 2. Route Lead API Requests to PHP handler
+    RewriteRule ^api/leads/?$ api/leads.php [L,QSA]
+
+    # 3. Clean URLs for Static Next.js Pages (e.g. /about-us -> /about-us.html)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+
+    # Handle sub-directory clean URLs (e.g. /insurance-solutions/health-insurance)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# 4. Custom Error Document
+ErrorDocument 404 /404.html
+
+# 5. Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" env=HTTPS
+</IfModule>
+
+# 6. Block Sensitive Files and Hidden Directories
+<FilesMatch "(^\.|\.jsonl$|\.env$|\.git|package\.json|next\.config)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 7. Browser Caching and Gzip / Brotli Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    
+    # HTML and API should always revalidate
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
+    
+    # Static hashed assets can be cached aggressively
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>

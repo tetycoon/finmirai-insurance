@@ -13,12 +13,7 @@ export const metadata = buildMetadata({
   path: "/get-insurance-assistance",
 });
 
-type Props = { searchParams: Promise<{ type?: string | string[] }> };
-
-export default async function GetInsuranceAssistancePage({ searchParams }: Props) {
-  const raw = (await searchParams).type;
-  const defaultType = typeof raw === "string" ? raw.slice(0, 60) : "";
-
+export default function GetInsuranceAssistancePage() {
   return (
     <>
       <PageHero
@@ -35,7 +30,7 @@ export default async function GetInsuranceAssistancePage({ searchParams }: Props
       <Section tone="mist">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="rounded-2xl border border-navy-100 bg-white p-6 shadow-card sm:p-8 lg:col-span-8">
-            <InsuranceEnquiryForm defaultType={defaultType} />
+            <InsuranceEnquiryForm />
           </div>
           <aside className="space-y-5 lg:col-span-4">
             <div className="rounded-2xl bg-navy-900 p-6 text-white">

@@ -8,19 +8,14 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
+  output: "export",
   reactStrictMode: true,
   poweredByHeader: false,
-  // Don't enable experimental.inlineCss: measured on this site it embeds the stylesheet 4× in each HTML
-  // page and again in every prefetched route payload, raising mobile Total Blocking Time from ~0.3s to 1–3s.
+  trailingSlash: false,
   images: {
-    formats: ["image/avif", "image/webp"],
-    // Default is 60s: browsers re-check every photo a minute later and the server re-encodes them.
-    // Photos in /public/images rarely change — when replacing one, give the new file a new name.
-    minimumCacheTTL: 60 * 60 * 24 * 30,
+    unoptimized: true,
   },
-  async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
-  },
+  // In static export, headers in next.config are ignored by Next.js and handled via .htaccess
 };
 
 export default nextConfig;

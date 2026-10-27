@@ -1,5 +1,7 @@
 "use client";
 
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { corporateRequirementOptions, insuranceTypeOptions } from "@/content/productOptions";
 import {
   advisorInterestOptions,
@@ -18,7 +20,10 @@ import {
 import { Checkbox, ChoiceGroup, ConsentField, FormNote, FormRow, LeadForm, SelectField, TextArea, TextField } from "./FormKit";
 
 /** General "Get Insurance Assistance" enquiry — designed to complete in under 2 minutes (Plan §2). */
-export function InsuranceEnquiryForm({ defaultType = "" }: { defaultType?: string }) {
+function InsuranceEnquiryFormInner({ defaultType: explicitDefault = "" }: { defaultType?: string }) {
+  const searchParams = useSearchParams();
+  const queryType = searchParams?.get("type") ?? "";
+  const defaultType = explicitDefault || queryType;
   const validDefault = insuranceTypeOptions.some((o) => o.value === defaultType) ? defaultType : "";
   return (
     <LeadForm
@@ -44,8 +49,19 @@ export function InsuranceEnquiryForm({ defaultType = "" }: { defaultType?: strin
   );
 }
 
+export function InsuranceEnquiryForm(props: { defaultType?: string }) {
+  return (
+    <Suspense fallback={<div className="py-8 text-center text-navy-500">Loading form...</div>}>
+      <InsuranceEnquiryFormInner {...props} />
+    </Suspense>
+  );
+}
+
 /** "Get a Quote" form — six fields + consent, gold Submit Enquiry button. */
-export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
+function QuoteFormInner({ defaultType: explicitDefault = "" }: { defaultType?: string }) {
+  const searchParams = useSearchParams();
+  const queryType = searchParams?.get("type") ?? "";
+  const defaultType = explicitDefault || queryType;
   const validDefault = insuranceTypeOptions.some((o) => o.value === defaultType) ? defaultType : "";
   return (
     <LeadForm
@@ -74,6 +90,14 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
       <TextArea name="message" label="Message" rows={2} maxLength={500} placeholder="Briefly tell us what you need — e.g. family health cover for 4 members." />
       <ConsentField />
     </LeadForm>
+  );
+}
+
+export function QuoteForm(props: { defaultType?: string }) {
+  return (
+    <Suspense fallback={<div className="py-8 text-center text-navy-500">Loading form...</div>}>
+      <QuoteFormInner {...props} />
+    </Suspense>
   );
 }
 

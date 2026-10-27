@@ -12,8 +12,6 @@ export const metadata = buildMetadata({
   path: "/get-a-quote",
 });
 
-type Props = { searchParams: Promise<{ type?: string | string[] }> };
-
 const reasons: { title: string; text: string; icon: IconName }[] = [
   { title: "Options explained clearly", text: "Cover, exclusions and costs in plain language.", icon: "compass" },
   { title: "Multiple insurance solutions", text: "Personal, family and business cover in one place.", icon: "layers" },
@@ -27,10 +25,7 @@ const nextSteps = ["An advisor reviews your requirement", "We contact you to und
  * Desktop: form on the left (scrolls with the page), info panel on the right stays pinned (sticky).
  * Phones: form first, info below.
  */
-export default async function GetAQuotePage({ searchParams }: Props) {
-  const raw = (await searchParams).type;
-  const defaultType = typeof raw === "string" ? raw.slice(0, 60) : "";
-
+export default function GetAQuotePage() {
   return (
     <section className="bg-mist pb-16 pt-4 sm:pb-20 sm:pt-5">
       <div className="container">
@@ -54,7 +49,7 @@ export default async function GetAQuotePage({ searchParams }: Props) {
               </div>
             </header>
             <div className="px-5 py-5 sm:px-8 sm:py-6">
-              <QuoteForm defaultType={defaultType} />
+              <QuoteForm />
             </div>
           </div>
 
